@@ -183,6 +183,9 @@
                        title="RSS 订阅"></a>
                 
                 
+                    <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索">
+                    </a>
+                
             </nav>
             <div id="search-form-wrap">
                 <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
@@ -267,7 +270,7 @@
                 
                     
                     
-                        <img data-src="https://img.3dmgame.com/uploads/allimg/170405/316-1F4051KT6.jpg" data-sizes="auto" alt="中二社解包神器fuckpaz" class="lazyload">
+                        <img data-src="https://www.dp712.com/wp-content/uploads/2022/07/5a3f389e8b135753.jpg" data-sizes="auto" alt="中二社解包神器fuckpaz" class="lazyload">
                     
                 
                 <a href="/2023/07/24/%E4%B8%AD%E4%BA%8C%E7%A4%BE%E8%A7%A3%E5%8C%85%E7%A5%9E%E5%99%A8fuckpaz/"></a>
@@ -311,7 +314,7 @@
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>文章</div>
-                <div class="sidebar-state-number">14</div>
+                <div class="sidebar-state-number">15</div>
             </div>
             <div class="sidebar-state-category">
                 <div>分类</div>
@@ -410,10 +413,10 @@
             
                 <div>
                     <span class="icon-brush"></span>
-                    14.4k
+                    15.5k
                     &nbsp;|&nbsp;
                     <span class="icon-coffee"></span>
-                    00:44
+                    00:47
                 </div>
             
             
@@ -440,7 +443,7 @@
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>文章</div>
-                <div class="sidebar-state-number">14</div>
+                <div class="sidebar-state-number">15</div>
             </div>
             <div class="sidebar-state-category">
                 <div>分类</div>
@@ -580,6 +583,34 @@
 
 
 
+    
+<script src="https://unpkg.com/algoliasearch@4.17.1/dist/algoliasearch-lite.umd.js"></script>
+
+    
+<script src="https://unpkg.com/instantsearch.js@4.56.1/dist/instantsearch.production.min.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+    <script>
+        var CONFIG = {
+            root: '/',
+            algolia: {
+                applicationID: "ZE7M0BQHRS",
+                apiKey: "e2edbbaaa8c7302e37c477760e27b102",
+                indexName: "hexo",
+                hits: {
+                    "per_page": parseInt("10")
+                },
+                labels: {
+                    "input_placeholder": "搜索.....",
+                    "hits_empty": "未发现与 「${query}」相关内容",
+                    "hits_stats": "找到${hits}条结果（用时 ${time} ms）"
+                }
+            }
+        };
+    </script>
+
 
     </div>
     <div class="site-search">
@@ -602,4 +633,5 @@
 <script src="/js/insertHighlight.js"></script>
 <!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/miku.model.json"},"display":{"position":"right","width":300,"height":600,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
     </html>
+
 
