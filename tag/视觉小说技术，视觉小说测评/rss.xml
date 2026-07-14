@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>理理の图书馆 • Posts by &#34;视觉小说技术，视觉小说测评&#34; tag</title>
+        <link>https://auroraisok.online</link>
+        <description>水仙，花语是，珍爱自己</description>
+        <language>zh-CN</language>
+        <pubDate>Fri, 27 Oct 2023 22:16:51 +0800</pubDate>
+        <lastBuildDate>Fri, 27 Oct 2023 22:16:51 +0800</lastBuildDate>
+        <category>技术</category>
+        <category>日常</category>
+        <category>杂谈</category>
+        <category>galgame</category>
+        <category>gal</category>
+        <category>网站</category>
+        <category>视觉小说技术，视觉小说测评</category>
+        <category>gal工具</category>
+        <category>gal测评</category>
+        <category>QQ机器人</category>
+        <category>闲聊</category>
+        <category>Gal杂谈</category>
+        <category>视觉小说工具</category>
+        <category>随想</category>
+        <category>技术向</category>
+        <item>
+            <guid isPermalink="true">https://auroraisok.online/2023/10/27/%E3%80%8AGINKA%E3%80%8B%E8%A7%A3%E5%8C%85%E8%AE%B0%E5%BD%95%E5%8F%8A%E4%BD%9C%E5%93%81%E7%AE%80%E8%AF%84/</guid>
+            <title>《GINKA》解包记录及作品简评</title>
+            <link>https://auroraisok.online/2023/10/27/%E3%80%8AGINKA%E3%80%8B%E8%A7%A3%E5%8C%85%E8%AE%B0%E5%BD%95%E5%8F%8A%E4%BD%9C%E5%93%81%E7%AE%80%E8%AF%84/</link>
+            <category>视觉小说技术，视觉小说测评</category>
+            <pubDate>Fri, 27 Oct 2023 22:16:51 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;#前言&lt;br&gt;
+&lt;font size=5&gt;&lt;font color=red&gt;注：本记录仅用于程序学习和交流，请不要擅自对游戏进行解包、随意使用游戏的立绘、bgm 等文件。否则相关法律责任自负&lt;/font&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;只是提供一种方法，方法很多大佬勿喷&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;#解包：&lt;/p&gt;
+&lt;p&gt;工具：krkrdump (在博客文章《galgame 常用模拟器和解包工具》中或者 github 上获取)&lt;/p&gt;
+&lt;p&gt;方法：下载 krkrdump, 打开 KrkrDump.json 文件，找到 这段文字（不同电脑显示的路径不同，这个路径是解包文件的位置）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“outputDirectory”: “E:\games\game\dump”,&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;可以改动路径，保存文件到你想要的位置。但需注意：&lt;/p&gt;
+&lt;p&gt;1. 路径必须全是英文&lt;br&gt;
+ 2. 分隔符必须是俩 \，一个不可以。（我这个博客打不出来俩，希望理解。。。）&lt;/p&gt;
+&lt;p&gt;然后拖动游戏启动程序至 krkrdumploader.exe，这时候游戏会打开，直接运行游戏就好了，无脑 ctrl 跳过（没玩完可以改游戏设置实现 ctrl 跳过）&lt;/p&gt;
+&lt;p&gt;最后就能在你想要保存文件的位置找到游戏解包文件啦！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;#作品简评&lt;/p&gt;
+&lt;p&gt;最后评价一下前翼社新作《GINKA》，游戏 10.269 点发售，我在 10.27 日 21:28 分打完。流程挺简单，记得存档就行。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;音乐部分：不好也不差，和松本文纪前几部作品比起来确实有些逊色，玩的时候氛围感比较好，但玩完感觉没有印象特别深刻的曲子。大概是中等偏上一丢丢的水平。&lt;/p&gt;
+&lt;p&gt;立绘：侧面角色是渡边明夫画的，感觉有些小崩坏，画上不是特别讨我喜欢。GINKA 的立绘是比较优秀的，yusano 正常发挥。非常不错&lt;/p&gt;
+&lt;p&gt;CG：CG 很好看，数量比《Atri:My Dear Moments》多，yusano 的画工无需怀疑，这个必须给好评！&lt;/p&gt;
+&lt;p&gt;剧情：剧情上一些转折不错，第一周目感觉跟做梦一样 —— 一种很美妙的感觉，到 next 就感觉梦有些崩坏了，next 玩起来有些繁琐了，直接下降一个层次。第一周目玩起来感觉有一种懵懵懂懂的很美妙，有点难理解，GINKA 和银花什么关系？第一周目我是没玩懂。第二周目（next 篇章）感觉则是在尽力解释但又词穷的感觉… 开始有些混乱起来了。结尾比较草率。&lt;br&gt;
+整体上算是 “高开低走”，第一周目我觉得很不错，但到第二周目就有些崩坏了&lt;br&gt;
+有人说《GINKA》有种缝合怪的感觉，确实又一点，我玩的时候想起了《夏日口袋》《美少女万华镜 2：勿忘草与永远的少女》《海猫鸣泣之时》《island》《君与彼女与彼女之恋》《9-nine - 春色春恋春熙风》《Clannad》这些作品。但这些并不是说《GINKA》不好，我玩起来还是感觉挺不错的，日常环节没有让我觉得枯燥（章鱼舞卡哇伊！！），我玩的时候干劲十足。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;总评：《GINKA》总体上不好不坏，很多负面评价可能是因为前翼社宣传、以及与 亚托莉 对比，可能会有些失望。总体上我感觉还是不错。&lt;br&gt;
+挺适合新人入坑的一部作品，我的话一定会推荐给没玩《GINKA》时的我玩。&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

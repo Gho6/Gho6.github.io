@@ -1,0 +1,723 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/amatsutsumi.ico">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="理理の图书馆" href="https://auroraisok.online/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="理理の图书馆" href="https://auroraisok.online/atom.xml" />
+<link rel="alternate" type="application/json" title="理理の图书馆" href="https://auroraisok.online/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="技术" />
+
+
+<link rel="canonical" href="https://auroraisok.online/2023/12/19/Galgame-%E6%B1%89%E5%8C%96%E7%A0%B4%E8%A7%A3%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%EF%BC%9A%E4%BB%A5-BGI-%E4%B8%BA%E4%BE%8B%EF%BC%8C%E4%BB%8E%E8%A7%A3%E5%8C%85%E5%88%B0%E6%B5%8B%E8%AF%95/">
+
+
+
+  <title>
+Galgame 汉化破解初级教程：以 BGI 为例，从解包到测试 |
+aurora = 理理の图书馆 = 吾は悪事も一言、善事も一言、言い离つ神。</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Galgame 汉化破解初级教程：以 BGI 为例，从解包到测试
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-12-19 22:59:26">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-12-19T22:59:26+08:00">2023-12-19</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">aurora</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://img.touchgalres.xyz/2024/01/340e7061d620240128232546.jpg">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="https://auroraisok.online/2023/12/19/Galgame-%E6%B1%89%E5%8C%96%E7%A0%B4%E8%A7%A3%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%EF%BC%9A%E4%BB%A5-BGI-%E4%B8%BA%E4%BE%8B%EF%BC%8C%E4%BB%8E%E8%A7%A3%E5%8C%85%E5%88%B0%E6%B5%8B%E8%AF%95/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="aurora">
+    <meta itemprop="description" content="吾は悪事も一言、善事も一言、言い离つ神。, 水仙，花语是，珍爱自己">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="理理の图书馆">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p>前言：<br>
+最近几天在推《樱之诗》，顺便扒出来了《樱之诗》的黑历史 ——《春之雪》—— 就是当年买《超级糖果》送的。于是通过不知名手段下载到了一份玩，却发现这款 2008 年的 樱之诗体验版 无人汉化、连机翻都没有。作为一名医学生，我觉得如果能破解这款游戏并用 GPT 翻译一下，可能会对我的解剖学有帮助。于是扒出了当年澄空的帖子，试图对《春之雪》“鞭尸”</p>
+<hr>
+<p>今天用 fxckBGI2.4 把文件全部解包出来，解包工具很多，garbro 也可以。接下来再研究如何提取文本和免封包读取 。</p>
+<hr>
+<p>以下内容转载自澄空学园（<span class="exturl" data-url="aHR0cHM6Ly9iYnMuc3VtaXNvcmEubmV0L3JlYWQucGhwP3RpZD0xMTA0MjM1MSVFRiVCQyU4OQ==">https://bbs.sumisora.net/read.php?tid=11042351）</span></p>
+<p>囧，CK 这边的编辑器是 WindCode，也不能直接插入 HTML，只能大概排一下版了。对排版和格式有高要求的同学请看这里。</p>
+<p>转载请注明出处。</p>
+<p>Ever tried. Ever failed.<br>
+No matter. Try again.<br>
+Fail again. Fail better.</p>
+<p>一直想写一篇面向新手的 Galgame 汉化教程，但一直苦于没有时间。现在终于考完了试，申请也告一段落，这才抽了点时间来写这篇文。还有，工口你认真学，今后杏爱会的程序就看你的了。</p>
+<p>本教程假设你已经满足以下条件：</p>
+<p>玩过 Galgame，了解一般 Galgame 资源存储的方式<br>
+会一门编程语言，VB6 和 JavaScript 等前端语言除外<br>
+能看懂用其它编程语言写出的源代码，此处特指用 C++<br>
+ 能看懂汇编，51 单片机的汇编语言就行<br>
+懂数据结构<br>
+知道什么是字符编码<br>
+英语水平还说得过去<br>
+懂一点儿日语</p>
+<p>本教程中使用的名词：</p>
+<p>封包：指游戏的资源文件在游戏安装目录下的保存形式<br>
+脚本：含有二进制控制符和纯文本的文件<br>
+文本：从脚本中提取，人类能够读懂的文本文件</p>
+<p>首先来看看破解都要干啥：</p>
+<p>解开游戏的封包文件<br>
+从提取出的脚本中提取出文本<br>
+从提取出的脚本中提取出图片<br>
+把翻译好的文本写回到脚本里<br>
+把新的图片和脚本放回到封包里<br>
+修改游戏主程序，使之能正常读取中文</p>
+<p>好，让我们开始吧。</p>
+<ol>
+<li>准备</li>
+</ol>
+<p>我们以方糖社的《花色ヘプタグラム》为例进行实战。不过在开始之前，你需要准备几种工具：<br>
+一款支持多语言编码的文本编辑器，例如 Notepad2<br>
+ 一款十六进制编辑器，最好也能支持多语言编码，例如 010Editor<br>
+ 一款反汇编工具，例如 OllyDbg<br>
+ 你常用的 IDE，比如 Visual Studio<br>
+ 工具的用法在此不再赘述，请自行谷歌。<br>
+安装游戏后打开游戏的主目录，你会发现这些文件（已略去部分无用文件）：<br>
+Copy code<br>
+2012/09/26  16:33               643 autoload.arc<br>
+2012/09/26  16:33         1,817,109 data01000.arc<br>
+2012/09/26  16:33       876,414,725 data02000.arc<br>
+2012/09/26  16:33       654,502,744 data02001.arc<br>
+2012/09/26  16:33     1,179,169,979 data02010.arc<br>
+2012/09/26  16:33        12,594,853 data02050.arc<br>
+2012/09/26  16:33       299,065,396 data02100.arc<br>
+2012/09/26  16:33        21,874,416 data02950.arc<br>
+2012/09/26  16:33        14,331,692 data03000.arc<br>
+2012/09/26  16:33       922,747,352 data04000.arc<br>
+2012/09/26  16:33        75,902,855 data05000.arc<br>
+2012/09/26  16:33           860,160 Heptagram.exe<br>
+2012/09/26  16:33        34,148,877 sysgrp.arc<br>
+2012/09/26  16:33           290,498 sysprg.arc<br>
+2012/09/26  16:33         3,702,778 syssnd.arc<br>
+2012/09/26  16:33             2,825 system.arc</p>
+<p>很明显，Heptagram.exe 是游戏的主程序，*.arc 是游戏的封包文件。接下来，我们开始正式的流程。</p>
+<ol start="2">
+<li>破解</li>
+</ol>
+<p>2.1. 运行破解</p>
+<p>双击 Heptagram.exe 来测试一下，发现没有出现游戏主窗口；而用 AppLocate 工具加载后却能够正常运行。这说明开发商在游戏中进行了某种检查，以防止游戏在日本日外的国家运行（原因大家都知道，而且还有家中二公司把这点做到了极致）。</p>
+<p>好，让我们想一想，如何得到当前操作系统的区域信息？</p>
+<p>使用 GetUserDefaultLCID API<br>
+ 使用 GetSystemDefaultLangID API<br>
+ 使用 GetSystemDefaultUILanguage API<br>
+ 使用 GetTimeZoneInformation API<br>
+ 使用 MultiByteToWideChar API 转化一个字符串，检查结果<br>
+等等……</p>
+<p>透露一下，BGI 引擎使用 GetSystemDefaultLangID 来确定当前操作系统的区域。<br>
+运行 OllyDbg，载入 Heptagram.exe，如图。<br>
+<img data-src="https://picdm.sunbangyan.cn/2023/12/19/8b656a0ea69cd667b73130050d1fe0b4.jpeg" alt=""></p>
+<p>按下 CTRL + N，在打开的 API 列表中找到 GetSystemDefaultLangID，右键选择 “在每个参考上设置断点”。如图。<br>
+<img data-src="https://picdl.sunbangyan.cn/2023/12/19/0ac321e900d869173b8b80bdfabb318c.jpeg" alt=""></p>
+<p>双击 Breakpoints 窗口中的项，来到 GetSystemDefaultLangID 的调用位置：</p>
+<hr>
+<p>Copy code<br>
+00455CE0  /$  FF15 D0E04A00 call    dword ptr [&lt;&amp;KERNEL32.GetSystemD&gt;; [GetSystemDefaultLangID<br>
+00455CE6  |.  8B5424 04     mov     edx, dword ptr [esp+4]<br>
+00455CEA  |.  25 FF030000   and     eax, 3FF<br>
+00455CEF  |.  33C9          xor     ecx, ecx<br>
+00455CF1  |.  3BC2          cmp     eax, edx<br>
+00455CF3  |.  0F94C1        sete    cl<br>
+00455CF6  |.  8BC1          mov     eax, ecx<br>
+00455CF8  .  C3            retn</p>
+<hr>
+<p>在简体中文环境下， GetSystemDefaultLangID 返回值是 0x804，而在日语环境下，返回值是 0x411。那么怎么改？很简单，直接把 0x411 写入返回值的寄存器就行了。这样，无论是什么语言的系统，都会被认为是日语系统。<br>
+双击 00455CE0 这一行，把汇编改为 mov eax, 411。改好后的这部分代码如下所示：<br>
+Copy code<br>
+00455CE0      B8 11040000   mov     eax, 411<br>
+00455CE5      90            nop                ; 修改后的代码比原先的要短，所以剩余的部分会用 nop 补齐<br>
+ 00455CE6  |.  8B5424 04     mov     edx, dword ptr [esp+4]<br>
+00455CEA  |.  25 FF030000   and     eax, 3FF<br>
+00455CEF  |.  33C9          xor     ecx, ecx<br>
+00455CF1  |.  3BC2          cmp     eax, edx<br>
+00455CF3  |.  0F94C1        sete    cl<br>
+00455CF6  |.  8BC1          mov     eax, ecx<br>
+00455CF8  .  C3            retn</p>
+<hr>
+<p>改好之后，在 CPU 窗口右键，复制到可执行文件 -&gt; 所有修改 -&gt; 全部复制，再在弹出的窗口中右键，保存文件，命名为 Heptagram_NoCheck.exe，完成后退出 OllyDbg。</p>
+<p>接下来找到刚保存的 Heptagram_NoCheck.exe，双击运行，游戏界面是不是出来了？</p>
+<hr>
+<p>2.2. 游戏脚本</p>
+<p>2.2.1. 解包</p>
+<p>这一步可以说是整个汉化过程中最简单的了（当然，这是建立在前辈们的辛苦分析上的）：用老毛子出品的 AnimED 即可（不推荐使用 Crass）。</p>
+<p>从 BGI 汉化经验来看，脚本文件一般都保存在前几个封包中（本游戏的脚本就在 data01000.arc 中）。如果你找不到，你可以把封包逐一拖到 ExtractData 窗口中观察。单个脚本的大小一般不会超过 200KB。</p>
+<p>使用 AnimED 解开 data01000.arc ，拿到脚本（同样，略去了部分文件）：</p>
+<hr>
+<p>Copy code<br>
+2013/01/13  16:31            64,740 a01<br>
+2013/01/13  16:31            72,838 a02<br>
+2013/01/13  16:31            76,598 a03<br>
+2013/01/13  16:31             6,433 b06_3<br>
+2013/01/13  16:31            47,365 b07_1<br>
+2013/01/13  16:31            71,012 b07_2<br>
+2013/01/13  16:31            92,156 c06_2<br>
+2013/01/13  16:31            77,374 d09<br>
+2013/01/13  16:31            79,352 d10_1<br>
+2013/01/13  16:31             1,712 main<br>
+2013/01/13  16:31             3,150 s_ci_02<br>
+2013/01/13  16:31           110,513 Yuzuriha<br>
+2013/01/13  16:31           128,763 _01<br>
+2013/01/13  16:31            93,819 _02<br>
+2013/01/13  16:31           154,264 _03<br>
+2013/01/13  16:31           100,339 _07<br>
+2013/01/13  16:31           268,696 _08<br>
+2013/01/13  16:31            28,475 _10_2<br>
+ 打开准备好的 Notepad2，载入其中的 _01 文件，然后按下 F8，选择 Japanese (Shift-JIS)。你会发现，这个文件就是游戏的第一章：</p>
+<p>2.2.2. 二进制脚本分析</p>
+<p>在打开的 _01 文件中，你可以看到不可读的二进制代码和可读的文本混在一起。接下来，打开你的十六进制编辑器，载入_01 文件。</p>
+<p><img data-src="https://picdl.sunbangyan.cn/2023/12/19/4a1a5572d59cccf5c3d0f2de332175d8.jpeg" alt=""></p>
+<p>如图所示，BGI 脚本分为四部分：</p>
+<p>头部 Magic：用于校验该文件的类型<br>
+脚本头部：定义了该脚本所需的全局变量<br>
+指令部分：控制游戏的流程<br>
+文本列表：我们最感兴趣的东西</p>
+<p>在游戏执行中，引擎不断地读取指令部分中的指令，形成了游戏的时间线。 可以看出，0x00000003 之后的四字节（DWORD）和下面文本列表中字符串 _01.txt （起始地址为 0x18D1C）有关：<br>
+Copy code<br>
+0x18D1C = 0x1C (MAGIC 长度) + 0x34 (头部长度) + 0x18CCC (0x00000003 之后的四字节)<br>
+ 如果你不放心，可以再找几句话计算看看。<br>
+那么，思路就确定下来了：<br>
+逐个读取所有的 0x00000003，把之后的四字节作为地址，修正后用来查找目标处的字符串。也就是<br>
+ Copy code<br>
+String = GetStringAt(GetUnsignedIntAt(AddressOfAny(0x03) + 4) + LengthOf(magic) + LengthOf(header))</p>
+<p>接下来，用你最擅长的编程语言写一个提取文本的工具吧。</p>
+<p>2.3. 图片提取与转化</p>
+<p>BGI 引擎的图片有两种格式：标准 BMP/PNG 和去掉文件头的 BMP。前者用于 CG 和立绘，后者用于系统图片（sysgrp.arc 中的图片文件）。<br>
+注意：部分图片的像素排序是反转的，保存时也要保持反转排序（在 PS 的保存窗口中勾选翻转行序）<br>
+注意 2：如果图片含有 Alpha 通道，那么 Alpha 通道也要修！</p>
+<p>2.3.1. 标准 BMP/PNG 文件</p>
+<p>这些文件很好判断。对于 BMP 文件，文件头部总是 BM 两个字母；而对于 PNG 格式，文件头总是 {0x89, 0x50, 0x4E, 0x47}（写成中文的话就是 塒 NG）。给解出来的文件添加相应后缀，用 Photoshop 打开即可。</p>
+<p>2.3.2. 系统图片</p>
+<p>让我们再次祭出十六进制编辑器。</p>
+<p><img data-src="https://picdl.sunbangyan.cn/2023/12/19/a7f41c7e8ece40668bb7f24c48e27a4f.jpeg" alt=""></p>
+<p>如图，文件的钱六个字节分别是图片宽度，图片高度和色深。可以看出，sys_title_006 图片是一个 1280 * 720 的 32 位图片。<br>
+再次使用你最拿手的编程语言，写一个小程序来修复 BMP 文件头吧：请阅读 BeginBuildBMP 函数的代码。</p>
+<p>至此，资源破解结束。</p>
+<ol start="3">
+<li>资源回封</li>
+</ol>
+<p>3.1. 游戏脚本</p>
+<p>脚本的回封很简单，照着提取工具写一个对应的逆运算就行了。注意，新文件中的汉字必须是 GBK 编码。</p>
+<p>3.2. 图片</p>
+<p>3.2.1. 标准图片</p>
+<p>去掉后缀就行。</p>
+<p>3.2.2. 系统图片</p>
+<p>刚刚我们添加了 BMP Header，现在我们需要一个去掉 BMP Header 的工具：请阅读 BeginBuildResource 函数的代码。</p>
+<ol start="4">
+<li>测试运行</li>
+</ol>
+<p>上面，我</p>
+<p>“汉化” 了一张 CG （ev_warn02 来自 data02010.arc）：</p>
+<p>汉化了一张 系统图 （sys_title_006 来自 sysgrp.arc）：</p>
+<p>汉化了 _01 脚本的前几句话：</p>
+<p>把 ev_warn02 的后缀去掉，把 sys_title_006 的文件头去掉，把文本回写到 _01 中，生成新文件再重新命名为 _01。<br>
+完成后，把三个文件重命名为原本的名字，复制到游戏目录下。双击游戏，运行。</p>
+<p>图片很正常，能用。可是脚本就没这么方便了：</p>
+<p>出现了乱码。<br>
+这就不得不说字符编码和边界检查了。点击这里和这里，仔细阅读肠姐姐的文章。<br>
+BGI 引擎中存在多处校验边界的代码，具体可以通过 OllyDbg 查找（CTRL+L）cmp al, 0A0 来定位（《花色ヘプタグラム》中只有两处）。<br>
+其它需要修改的地方：<br>
+CreateFontA 的 fdwCharSet 参数：改为 86 （其他游戏可能会有 CreateFontIndirectA 函数，后者要麻烦一些）<br>
+MultiByteToWideChar 的 Charset 参数：改为 3A8<br>
+cmp eax, 0EF40 ; 改为 0FE40<br>
+cmp ebx, 0EF40 ; 改为 0FE40<br>
+cmp ebx, 8140 ; 8140 是 Shift-JIS 编码中的全角空格，所以此处应改为 0A1A1 （GBK 的全角空格）</p>
+<p>修改后保存主程序，再次运行，一切正常。</p>
+<ol start="5">
+<li>后续工作</li>
+</ol>
+<p>5.1. 字体</p>
+<p>用十六进制编辑器打开刚刚运行成功的主程序，把所有ＭＳ 明朝（俵俽 柧挬），ＭＳ ゴシック（俵俽 僑僔僢僋），MS Mincho，MS Gothic 改为黑体，或 SimHei，别忘了把空余的字节全填上 0x00。</p>
+<p>5.2. 窗口标题</p>
+<p>从 system.arc 中得到 ipl._bp，用十六进制编辑器修改字符串。</p>
+<p>5.3. （按需）人名乱码，下一句提示符乱码，方括号乱码</p>
+<p>从 sysprg.arc 中提取相应的 ._bp 文件，用十六进制编辑器修改。下面的是完成品，补丁质量：</p>
+<p>5.4. 补丁的注意事项</p>
+<p>既然 BGI 不用封包就能读取汉化后的文件，那么在发补丁时怎么办？打补丁之后，游戏目录不得一下子多出几百个文件么？孩子，你需要 MoleBox。</p>
+<ol start="6">
+<li>接下来？</li>
+</ol>
+<p>如果你觉得自己需要再次学习基本知识，请把这里所有回复大于 2 的主题帖读完。<br>
+如果你觉得自己能够挑战更高难度的破解，请点这里。<br>
+如果你有任何疑问，请留言。</p>
+
+      <div class="tags">
+          <a href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag"><i class="ic i-tag"></i> 技术</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-06-27 21:32:10" itemprop="dateModified" datetime="2024-06-27T21:32:10+08:00">2024-06-27</time>
+  </span>
+  <span id="2023/12/19/Galgame-汉化破解初级教程：以-BGI-为例，从解包到测试/" class="item leancloud_visitors" data-flag-title="Galgame 汉化破解初级教程：以 BGI 为例，从解包到测试" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="aurora 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="aurora 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="aurora 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>aurora <i class="ic i-at"><em>@</em></i>理理の图书馆
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="https://auroraisok.online/2023/12/19/Galgame-%E6%B1%89%E5%8C%96%E7%A0%B4%E8%A7%A3%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%EF%BC%9A%E4%BB%A5-BGI-%E4%B8%BA%E4%BE%8B%EF%BC%8C%E4%BB%8E%E8%A7%A3%E5%8C%85%E5%88%B0%E6%B5%8B%E8%AF%95/" title="Galgame 汉化破解初级教程：以 BGI 为例，从解包到测试">https://auroraisok.online/2023/12/19/Galgame-汉化破解初级教程：以-BGI-为例，从解包到测试/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/12/18/css%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.moehu.org&#x2F;pic.php?id&#x3D;img1?936252" title="css选择器的学习笔记">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>css选择器的学习笔记</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/12/24/%E7%BB%99%E6%89%93%E7%AE%97%E5%AD%A6%E5%8C%BB%E5%AD%A6%E7%B1%BB%E4%B8%93%E4%B8%9A%E7%9A%84%E4%BA%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BB%BA%E8%AE%AE/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img.moehu.org&#x2F;pic.php?id&#x3D;img1?199319" title="给打算学医学类专业的人的一些建议">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>给打算学医学类专业的人的一些建议</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="aurora"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">aurora</p>
+  <div class="description" itemprop="description">水仙，花语是，珍爱自己</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">67</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">15</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-user-secret"></i>Q群和友链</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/liuyan/" rel="section"><i class="ic i-feather"></i>留言板</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/liaotian/" rel="section"><i class="ic i-feather"></i>在线游戏</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/12/18/css%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/12/24/%E7%BB%99%E6%89%93%E7%AE%97%E5%AD%A6%E5%8C%BB%E5%AD%A6%E7%B1%BB%E4%B8%93%E4%B8%9A%E7%9A%84%E4%BA%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BB%BA%E8%AE%AE/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/04/08/%E3%80%90%E6%9D%82%E8%B0%88%E5%90%91%E3%80%91%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E5%87%A0%E9%83%A8galgame/" title="【杂谈向】最喜欢的几部galgame">【杂谈向】最喜欢的几部galgame</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/25/hexo%E5%8A%A0%E5%AF%86%E6%8F%92%E4%BB%B6%E5%88%86%E4%BA%AB/" title="hexo加密插件分享">hexo加密插件分享</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/12/24/%E7%BB%99%E6%89%93%E7%AE%97%E5%AD%A6%E5%8C%BB%E5%AD%A6%E7%B1%BB%E4%B8%93%E4%B8%9A%E7%9A%84%E4%BA%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BB%BA%E8%AE%AE/" title="给打算学医学类专业的人的一些建议">给打算学医学类专业的人的一些建议</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/07/20/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%8F%8A%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/" title="一篇文章及简单说明">一篇文章及简单说明</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/08/04/%E7%BE%8E%E5%B0%91%E5%A5%B3%E4%B8%87%E5%8D%8E%E9%95%9C5%EF%BC%9A%E7%90%86%E4%B8%8E%E8%BF%B7%E5%AE%AB%E7%9A%84%E5%B0%91%E5%A5%B3%E6%9D%82%E8%B0%88/" title="美少女万华镜5：理与迷宫的少女杂谈">美少女万华镜5：理与迷宫的少女杂谈</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/10/github%E4%B8%8B%E8%BD%BD%E5%92%8C%E8%AE%BF%E9%97%AE%E6%85%A2%EF%BC%9F%E9%80%9A%E8%BF%87%E9%95%9C%E5%83%8F%E7%AB%99%E4%B8%8B%E8%BD%BD/" title="github下载和访问慢？通过镜像站下载">github下载和访问慢？通过镜像站下载</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/07/24/%E4%B8%AD%E4%BA%8C%E7%A4%BE%E8%A7%A3%E5%8C%85%E7%A5%9E%E5%99%A8fuckpaz/" title="中二社解包神器fuckpaz">中二社解包神器fuckpaz</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/02/14/%E9%9B%B6%E6%88%90%E6%9C%AC%E5%BB%BA%E7%AB%99%EF%BC%9A%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%EF%BC%88%E4%BA%8C%EF%BC%89/" title="零成本建站：免费搭建一个自己的网站（二）">零成本建站：免费搭建一个自己的网站（二）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/06/25/%E6%B5%85%E8%B0%88%E5%9B%BD%E5%86%85gal%E8%B5%84%E6%BA%90%E7%AB%99%E7%9A%84%E5%9B%B0%E5%A2%83/" title="浅谈国内gal资源站的困境">浅谈国内gal资源站的困境</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/01/06/%E9%83%A8%E7%BD%B2QQ%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD/" title="部署QQ机器人中">部署QQ机器人中</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">aurora @ aurora</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/12/19/Galgame-汉化破解初级教程：以-BGI-为例，从解包到测试/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

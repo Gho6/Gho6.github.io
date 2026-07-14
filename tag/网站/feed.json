@@ -1,0 +1,38 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "理理の图书馆 • All posts by \"网站\" tag",
+    "description": "水仙，花语是，珍爱自己",
+    "home_page_url": "https://auroraisok.online",
+    "items": [
+        {
+            "id": "https://auroraisok.online/2024/06/29/%E6%90%AD%E5%BB%BAflarum%E8%AE%BA%E5%9D%9B/",
+            "url": "https://auroraisok.online/2024/06/29/%E6%90%AD%E5%BB%BAflarum%E8%AE%BA%E5%9D%9B/",
+            "title": "搭建flarum论坛",
+            "date_published": "2024-06-29T03:49:57.000Z",
+            "content_html": "<p>本站专属论坛已经建成:<span class=\"exturl\" data-url=\"aHR0cHM6Ly9hdXJvcmF5aC54eXovJUVGJUJDJThDJUU2JUFDJUEyJUU4JUJGJThFJUU1JTkwJTg0JUU0JUJEJThEJUU4JUFFJUJGJUU5JTk3JUFFJUVGJUJDJTgx\">https://aurorayh.xyz/，欢迎各位访问！</span></p>\n<hr>\n<p>最近想搭建个论坛玩，目前比较主流的论坛网站框架有很多，比如 discuz (比如 kidfansclub)、discourse、nodebb (比如隔壁真红小站)、flarum。最先我是准备拿我那吃灰的服务器搭建个 discourse 论坛玩，奈何配置不够，于是放弃了。</br>之所以选择 flarum，我看中的特点就是轻量、配置要求低，只用台虚拟主机就能在三分钟内搭建完成、还很流畅；对于一个小型论坛来说已经足够了。</br>目前网上大都讲的是用 vps 搭建 flarum，说实话确实有难度，我写期用虚拟主机的。</p>\n<hr>\n<p>教程我发布在:<span class=\"exturl\" data-url=\"aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL29wdXMvOTQwMTQ1ODY5ODc4OTg0NzU5\">https://www.bilibili.com/opus/940145869878984759</span></br><br>\n资源压缩包：<span class=\"exturl\" data-url=\"aHR0cHM6Ly93d3QubGFuem91by5jb20vaWJ1NmkyMTRlOW9m\">https://wwt.lanzouo.com/ibu6i214e9of</span></br><br>\n这里补充的是，把 config.php 文件里 “<span class=\"exturl\" data-url=\"aHR0cDovL3huLS02cXF2N2kyeGR0OTViLyVFMiU4MCU5RCVFOSU4NyU4QyVFNyU5QSU4NCVFMiU4MCU5Q2h0dHAlRTIlODAlOUQlRTUlOEUlQkIlRTYlOEUlODklRUYlQkMlOEMlRTUlOTAlQTYlRTUlODglOTklRTQlQkMlOUElRTYlOUMlODklRTUlQkUlODglRTUlQTQlOUFidWcsJUU2JUFGJTk0JUU1JUE2JTgyJUU2JUI1JThGJUU4JUE3JTg4JUU1JTk5JUE4JUU4JUFFJUJGJUU5JTk3JUFFJUU0JUI4JThEJUU0JUJBJTg2JUU2JThBJUE1JUU5JTk0JTk5JUUzJTgwJTgy\">http:// 你的域名 /” 里的 “http” 去掉，否则会有很多 bug, 比如浏览器访问不了报错。</span></p>\n",
+            "tags": [
+                "网站"
+            ]
+        },
+        {
+            "id": "https://auroraisok.online/2024/06/22/%E4%BD%8E%E6%88%90%E6%9C%AC%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/",
+            "url": "https://auroraisok.online/2024/06/22/%E4%BD%8E%E6%88%90%E6%9C%AC%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/",
+            "title": "零成本建站记录",
+            "date_published": "2024-06-22T01:16:49.000Z",
+            "content_html": "<p>这篇文章用于记录一些零成本建站，无需太多的技术力，让任何人都能搭建自己的网站。</p>\n<h1>一、零成本搭建个人网站</h1>\n这里的方案是，github+hexo+zeabur+netlify+vercel+cloudns实现多线程部署。我们采用hexo作为网站主体框架，奖网站托管到github上，再托管到netlify、zeabur、vercel上给网站加速。cloudns的作用是白嫖二级域名进行多线路解析、从而提高网站访问速度。比如我们将github解析到国外线路、netlify解析到移动、vercel解析到联通、zeabur解析到电信。只需要一个域名、国内外人都能访问网站。</br>\n可以查看B站专栏cv32725903\n<h1>二、零成本搭建Alist网盘</h1>\n原理是利用Serv00虚拟主机+白嫖的二级域名+cloudflare，推荐看这篇文章：https://mymuwu.net/?p=1156</br>关于二级域名的白嫖，国内有很多二级域名免费分发平台，只需要一个邮箱账号就行。你也可以去cloudns白嫖二级域名。</br>cloudflare的作用是加速，但是cloudflare比较不稳定、有时反而减速，github有很多项目可以找出cloudflare快速的节点，可以配合食用\n<h1>三、零成本搭建discuz/flarum论坛</h1>\n同样用Serv00虚拟主机，将从官网下载的文件传主机上就行。discuz网上有很多教程了，写写flarum。把从官网下载的文件传主机上解压后，域名绑定public目录，一步步配置就好。加速继续白嫖cloudflare。\n<h1>四、零成本搭建wordpress站</h1>\n同样用Serv00和cloudflare\n<h1>五、零成本搭建图床</h1>\n用telegraph+cloudflare+github。很多人喜欢直接把github当成图床用，其实是有风险的。因为github文件超过1GB会有人工审查，发现你把github当图床会封号。\n<hr>\n<p>最终合理利用各类白嫖的网站，可以形成很不错的效果:</br><br>\nhexo/wordpress 网站当资源站用，Alist 用于存储资源提供下载，telegraph 用于给当图床，flarum/discuz 当网站的论坛</p>\n",
+            "tags": [
+                "网站"
+            ]
+        },
+        {
+            "id": "https://auroraisok.online/2024/01/10/wordpress%E7%BD%91%E7%AB%99%E4%B8%80%E9%94%AE%E5%A4%87%E4%BB%BD/",
+            "url": "https://auroraisok.online/2024/01/10/wordpress%E7%BD%91%E7%AB%99%E4%B8%80%E9%94%AE%E5%A4%87%E4%BB%BD/",
+            "title": "wordpress网站一键备份",
+            "date_published": "2024-01-10T08:50:25.000Z",
+            "content_html": "<p>写于 2024.1.10，当时在折腾 wordpress</p>\n<p>由于自己入侵了自己的网站 “樱韵”，自己在匮乏的技术力下，一怒之下把网站删了（幸好我有备份). 然而当我打开我的备份插件 All-in-One WP Migration 时，发现只能上传 50MB 文件大小，而我的网站有 177MB，扩充上传大小需要付费。我当时忍不住怒骂：是哪个 ** 给我推荐的这个备份插件！</p>\n<hr>\n<p>但是，有困难就一定有解决方法，在技术社区潜水多日，找到了解决办法。</p>\n<p>此方法目前只在<span class=\"exturl\" data-url=\"aHR0cHM6Ly93YW5oZWJpbi5sYW56b3VpLmNvbS9pNjlhZjFn\"> All-in-One WP Migration 6.77</span> 版本中测试有效：</p>\n<p>1. 我们找到插件编辑器，并选择 All-in-One WP Migration。<br>\n<img data-src=\"https://www.wanhebin.com/wp-content/uploads/2019/09/All-in-One-WP-Migration-1.png\" alt=\"\"><br>\n2. 打开 Constants.php 文件<br>\n<img data-src=\"https://www.wanhebin.com/wp-content/uploads/2019/09/All-in-One-WP-Migration-2.png\" alt=\"\"><br>\n 3. 编辑 Constants.php 文件，点击 Ctrl+F 查找 Max File Size 这行代码，会发现这行代码出现在 282 行上下。<br>\n<img data-src=\"https://www.wanhebin.com/wp-content/uploads/2019/09/All-in-One-WP-Migration-3.png\" alt=\"\"><br>\n我们把 2 &lt;&lt; 28 修改成 4294967296（这是以字节为单位，即 4GB，根据个人需要来修改），修改后如下图<br>\n<img data-src=\"https://www.wanhebin.com/wp-content/uploads/2019/09/All-in-One-WP-Migration-4.png\" alt=\"\"><br>\n 4. 保存<br>\n<img data-src=\"https://www.wanhebin.com/wp-content/uploads/2019/09/All-in-One-WP-Migration-5.png\" alt=\"\"><br>\n 5. 回到导入功能选型，此时已经测试成功了。</p>\n<p><img data-src=\"https://www.wanhebin.com/wp-content/uploads/2019/09/All-in-One-WP-Migration-6.png\" alt=\"\"></p>\n<hr>\n<p>在这个方法下，直接扩充到 4GB（改数字其实可以无限扩充，但 4GB 已经够我用了）<br>\n<span class=\"exturl\" data-url=\"aHR0cHM6Ly93d3cud2FuaGViaW4uY29tL2JsZ2QvMjE2Lmh0bWw=\">感谢大佬的教程</span></p>\n",
+            "tags": [
+                "网站"
+            ]
+        }
+    ]
+}

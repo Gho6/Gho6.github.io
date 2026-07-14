@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://auroraisok.online</id>
+    <title>理理の图书馆 • Posts by &#34;技术向&#34; tag</title>
+    <link href="https://auroraisok.online" />
+    <updated>2024-01-29T08:29:47.000Z</updated>
+    <category term="技术" />
+    <category term="日常" />
+    <category term="杂谈" />
+    <category term="galgame" />
+    <category term="gal" />
+    <category term="网站" />
+    <category term="视觉小说技术，视觉小说测评" />
+    <category term="gal工具" />
+    <category term="gal测评" />
+    <category term="QQ机器人" />
+    <category term="闲聊" />
+    <category term="Gal杂谈" />
+    <category term="视觉小说工具" />
+    <category term="随想" />
+    <category term="技术向" />
+    <entry>
+        <id>https://auroraisok.online/2024/01/29/%E9%9B%B6%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91%E7%AE%80%E5%8D%95%E6%B8%B8%E6%88%8F/</id>
+        <title>零代码开发简单游戏</title>
+        <link rel="alternate" href="https://auroraisok.online/2024/01/29/%E9%9B%B6%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91%E7%AE%80%E5%8D%95%E6%B8%B8%E6%88%8F/"/>
+        <content type="html">&lt;p&gt;小时候喜欢玩游戏，最先是《魔塔》—— 一款很经典的像素游戏（应该好多 90 后用学生机玩过）；后来是网吧爆火的罪恶都市和 CS1.6。&lt;/p&gt;
+&lt;p&gt;小时候觉得，做款游戏真是太强了，游戏开发者可以拿自己的游戏吹一辈子：啊，我玩的某某游戏就是你制作的，大大快给我发点金币和装备吧！如今我所就读的专业和计算机基本无缘了，希望几乎落空了。&lt;/p&gt;
+&lt;p&gt;不过如今互联网很发达，学习资源很多，我这种没有一点基础、8 年没碰电脑的人还能自己做出网站学习知识，信息开源化让更多技术都能被人接触到，于是开发一些简单的游戏也不是特别困难了。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;做一款自己的视觉小说：Webgal和humi&lt;/h1&gt;
+webgal是由b站up&#34;邻家码农真昼酱&#34;及其团队制作的一款视觉小说开发工具，使用起来方便快捷，可以直接在本地通过网页制作galgame,游戏支持PC、安卓端、网页版，自定义程度较高，持续更新支持live2d。官方网站https://openwebgal.com/zh-cn/，做出的一些游戏：https://hoshinasuzu.cc/suzu-memory/，https://demo.openwebgal.com/  相比于橙光功能要强大一些，相比于renpy、krkr学习周期要短，大概只花一个小时就能学会基本操作。
+&lt;p&gt;humi:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9odW1pZ2FsLmNvbS8=&#34;&gt;https://humigal.com/&lt;/span&gt; 这是一个通过网页制作视觉小说的社区，可以把制作出来的作品在社区分享，比较方便快捷。由于刚出炉不久，目前功能还不是特别强大。不过对于新人来说较友好。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;RPGMaker:小学生都能用来做RPG游戏&lt;/h1&gt;
+有人痛批RPGMaker是垃圾引擎，做出来的游戏质量不高，实际上RPGMaker是款很亲民的游戏开发引擎，以至于几乎人人都能开发游戏，而大众又没有经过游戏设计知识的相关培训——给你一套餐具，可以做出美味佳肴也可以做出一坨shit。不过，它却承载着延续普通人做游戏梦想的意义。
+&lt;p&gt;正版在 Steam 上有卖，前几天看了一下大概 200 多（我果断选择学习版），在 b 站找&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMW1YNHkxZzdvcC8/c3BtX2lkX2Zyb209MzMzLjk5OS4wLjAmYW1wO3ZkX3NvdXJjZT04ZGE3M2RhODhjYzhhZWE5MzZkNmNhZDhmMDBhNDQyZA==&#34;&gt;教学视频&lt;/span&gt;，我学了两天就可以上手制作属于我自己的游戏 (shit) 了。再与自己学过的一些 Galgame 破解知识结合，能获得很多素材（严格意义上视觉小说的素材是禁止商用的，不过我也就自娱自乐不传播，问题不大）。我用的 RMMV，学习难度不大。（隔壁花火学园的页游就是这个引擎制作的，怎么感觉论坛里的前辈们都会用 RPGMaker？）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;此外有很多开发工具（为什么不访问一下万能的 github 呢？），比如 playmaker (网友表示面试时震惊面试官)、GDevelop。&lt;/p&gt;
+&lt;p&gt;不过归根结底，代码是一个游戏的基层，不学代码一时爽，报错时就开始感到悲哀了。要我说不如去学习代码（&lt;/p&gt;
+</content>
+        <category term="技术向" />
+        <updated>2024-01-29T08:29:47.000Z</updated>
+    </entry>
+</feed>

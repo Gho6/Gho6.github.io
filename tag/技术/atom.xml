@@ -1,0 +1,432 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://auroraisok.online</id>
+    <title>理理の图书馆 • Posts by &#34;技术&#34; tag</title>
+    <link href="https://auroraisok.online" />
+    <updated>2024-06-27T13:07:22.000Z</updated>
+    <category term="技术" />
+    <category term="日常" />
+    <category term="杂谈" />
+    <category term="galgame" />
+    <category term="gal" />
+    <category term="网站" />
+    <category term="视觉小说技术，视觉小说测评" />
+    <category term="gal工具" />
+    <category term="gal测评" />
+    <category term="QQ机器人" />
+    <category term="闲聊" />
+    <category term="Gal杂谈" />
+    <category term="视觉小说工具" />
+    <category term="随想" />
+    <category term="技术向" />
+    <entry>
+        <id>https://auroraisok.online/2024/06/27/%E3%80%90%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E3%80%8Aambitious-mission-FD1%E3%80%8B%E6%B1%89%E5%8C%96%E7%A8%8B%E5%BA%8F%E8%AE%B0%E5%BD%95/</id>
+        <title>【个人学习笔记】《ambitious mission FD1》汉化程序记录</title>
+        <link rel="alternate" href="https://auroraisok.online/2024/06/27/%E3%80%90%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E3%80%8Aambitious-mission-FD1%E3%80%8B%E6%B1%89%E5%8C%96%E7%A8%8B%E5%BA%8F%E8%AE%B0%E5%BD%95/"/>
+        <content type="html">&lt;p&gt;写于 2023.11.14，针对 krkr 引擎的简单破解工作&lt;/p&gt;
+&lt;h2&gt;&lt;font color=red&gt;本记录只是针对于汉化程序的学习，是一名新人的学习记录（大佬勿喷）。
+私自拆包游戏用于商业用途、或者传播可能涉及违法行为，如有相关责任请自负，与本站无关。
+&lt;/font&gt;&lt;/h2&gt;
+&lt;p&gt;这几天忙着建设新网站（10 块钱的主机差评）和部署机器人，以及研究汉化程序和 web 前端开发。前段阵子把《ambitious mission》通关了，想要立即去玩续作，结果却发现没有汉化。于是自己制作了 GPT 机翻补丁，现记录一下过程。&lt;br&gt;
+程序学习参考了&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3JlYWQvY3YyMTMwNDc0Ny8=&#34;&gt; https://www.bilibili.com/read/cv21304747/&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;#浏览游戏目录&lt;/p&gt;
+&lt;p&gt;首先下载游戏，发现里边一堆 xp3 文件，应该是与 krkr 引擎脱不了关系了。有个文件吸引了我：&lt;b&gt;&lt;font color=red&gt;scn.xp3&lt;/font&gt;&lt;/b&gt;, 再看大小只有十几 MB，里边应该是脚本和游戏文本之类的了。于是开始解包 scn.xp3 文件&lt;/p&gt;
+&lt;p&gt;#解包&lt;/p&gt;
+&lt;p&gt;因为是比较新的游戏，猜测用的 krkrz 引擎，但不确定。先尝试用 krkrextract 和 xp3dumper_gui, 均不可以。于是用&lt;b&gt;krkrdumper&lt;/b&gt;解包，解了出来。我又参考文章&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLnp0amFsLmluZm8vYWNn&#34;&gt; https://blog.ztjal.info/acg&lt;/span&gt; 发现大佬也是用 krkrdumper 解包的。xp3 封包解包完毕。&lt;/p&gt;
+&lt;p&gt;## 继续解包 scn 文件，GPT 翻译后封包&lt;br&gt;
+浏览解包出来的文件，非常清晰明了的，那几个 scn 文件一看就是游戏文本文件，但是直接打是打不开的。&lt;br&gt;
+于是我翻了翻我电脑上的工具，首先是 freemote, 但我解出来的东西，一个 scn 文件解包出来两个东西… 而且我的技术使我无法封装，放弃使用 freemote&lt;/p&gt;
+&lt;p&gt;于是拿出另一款工具：VNTextPatch。（值得一提的是，这个工具用 cmd 操作起来比较麻烦，可以参考这个链接，有大佬弄出来个图形化操作界面，更方便&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL1hEMjMzMy9HYWxUcmFuc2w=&#34;&gt; https://github.com/XD2333/GalTransl&lt;/span&gt;）  但这里我是用的 cmd，&lt;/p&gt;
+&lt;p&gt;打开 VNTextPatch 的目录，powershell 运行，输入：VNTextPatch extractlocal 包含有 scn 文件的文件夹路径 接收 json 文件路径，回车（如果输入上边的内容不能执行，输入这个：&lt;br&gt;
+.\VNTextPatch extractlocal 包含有 scn 文件的文件夹路径 接收 json 文件路径）这样解包出来一堆 json 文件。&lt;/p&gt;
+&lt;p&gt;一般的话，因为这个文件还有一堆代码什么的，汉化组可能会把 json 文件里的日语提取出来给翻译人员（当然你也可以直接改）。但这里我用的是机翻，用 Galtransl 进行机器翻译，&lt;/p&gt;
+&lt;p&gt;翻译完后进行封包：输入：VNTextPatch insertlocal 原始 scn 文件的文件夹路径 包含 json 文件的文件夹路径 接收新的 scn 文件的文件夹路径，回车 （如果输入上边的内容不能执行，输入这个：&lt;br&gt;
+.\VNTextPatch insertlocal 原始 scn 文件的文件夹路径 包含 json 文件的文件夹路径 接收新的 scn 文件的文件夹路径）这样 scn 文件就封好了&lt;/p&gt;
+&lt;p&gt;#最后的封包&lt;br&gt;
+因为我只是自己玩，UI 汉化、修图都没做，于是就可以直接封了。先去&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2FyY3VzbWF4aW11cy9LaXJpa2lyaVRvb2xzL3JlbGVhc2VzL3RhZy8xLjc=&#34;&gt; https://github.com/arcusmaximus/KirikiriTools/releases/tag/1.7&lt;/span&gt; 下载 version.dll 文件，接下来用 enigma virtual box 封装好（使用方法参考文章 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3JlYWQvY3YyMTMwNDc0Ny8=&#34;&gt;https://www.bilibili.com/read/cv21304747/&lt;/span&gt;），最后你应该会得到一份 exe 文件，先别急着打开，找到游戏原文件以 exe.sig 为后缀的文件，把他复制一份重命名为：你刚才新得到的 exe 文件名字.exe.sig&lt;/p&gt;
+&lt;p&gt;接下来打开游戏就能玩了！&lt;/p&gt;
+</content>
+        <category term="技术" />
+        <updated>2024-06-27T13:07:22.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://auroraisok.online/2024/06/14/%E9%9B%B6%E6%88%90%E6%9C%AC%E5%BB%BA%E7%AB%99%E5%92%8C%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/</id>
+        <title>零成本建站和搭建图床</title>
+        <link rel="alternate" href="https://auroraisok.online/2024/06/14/%E9%9B%B6%E6%88%90%E6%9C%AC%E5%BB%BA%E7%AB%99%E5%92%8C%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/"/>
+        <content type="html">&lt;p&gt;写下这篇文章，怕我自己忘掉，同时也可以帮助更多友友。&lt;/p&gt;
+&lt;p&gt;零成本建站的教程我写过了，可前往这串链接查看:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9wZC5xcS5jb20vcy82NDQwMTQybTE=&#34;&gt;https://pd.qq.com/s/6440142m1&lt;/span&gt;&lt;/br&gt;&lt;br&gt;
+需要补充的是，在 “提升速度，托管到 netlify” 前的一步，需要开启 github pages,github 点开上方的 Settings, 点击侧边栏的 Pages 进行部署，网上教程很多，看不懂可以去搜。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;如何搭建免费图床?&lt;/h1&gt;
+可以参考B站视频BV13N411z7Lu，搭建完还挺好用。telegramf地址:https://github.com/cf-pages/Telegraph-Image
+&lt;p&gt;只要按视频操作就行了，另外有一点，如果你 github 打不开，通通把 github.com 换成 bgithub.xyz 这是镜像站，很快。&lt;/p&gt;
+</content>
+        <category term="技术" />
+        <updated>2024-06-14T09:53:01.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://auroraisok.online/2024/01/31/%E3%80%90%E5%85%8D%E8%B4%B9%E5%BC%80%E6%BA%90%E3%80%91AI%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E5%B7%A5%E5%85%B7%E2%80%94%E2%80%94%E6%95%88%E6%9E%9C%E5%A0%AA%E6%AF%94%E7%9C%9F%E4%BA%BA/</id>
+        <title>【免费开源】AI语音合成工具——效果堪比真人</title>
+        <link rel="alternate" href="https://auroraisok.online/2024/01/31/%E3%80%90%E5%85%8D%E8%B4%B9%E5%BC%80%E6%BA%90%E3%80%91AI%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E5%B7%A5%E5%85%B7%E2%80%94%E2%80%94%E6%95%88%E6%9E%9C%E5%A0%AA%E6%AF%94%E7%9C%9F%E4%BA%BA/"/>
+        <content type="html">&lt;p&gt;对于一个医学生来说，经常访问 github 能帮助他开阔计算机视野。前几天在 github 找到了一个&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL1JWQy1Cb3NzL0dQVC1Tb1ZJVFMv&#34;&gt; AI 语音合成项目&lt;/span&gt;，截止目前已经有了 7.7kstar, 后来知道是 b 站 up 主 “花儿不哭” 大佬和他的团队做的开源免费项目，并在 b 站发了专门的&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMTJnNHkxbTdVdy8/c3BtX2lkX2Zyb209MzMzLjMzNy5zZWFyY2gtY2FyZC5hbGwuY2xpY2s=&#34;&gt;视频&lt;/span&gt;。up 讲的比较快我最先也没看懂，推荐看&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMVA1NDExMTd5bi8/c3BtX2lkX2Zyb209MzMzLjMzNy5zZWFyY2gtY2FyZC5hbGwuY2xpY2s=&#34;&gt;这个视频&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;这门技术制作出的语音，效果堪比真人，有&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMTNONDExSjdnTS8/c3BtX2lkX2Zyb209MzMzLjk5OS4wLjA=&#34;&gt; AI 毕导解说红警的&lt;/span&gt;、有&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMWFRNHkxdzdiRi8/c3BtX2lkX2Zyb209MzMzLjMzNy5zZWFyY2gtY2FyZC5hbGwuY2xpY2s=&#34;&gt; AI 东雪莲的&lt;/span&gt;，我用来做&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMURCNDIxNjdNSi8/c3BtX2lkX2Zyb209MzMzLjk5OS4wLjA=&#34;&gt; gal 杂谈视频&lt;/span&gt;。效果堪比真人，隔壁毕导的话：我真以为是我在解说！！！我心想我什么时候解说过！！！&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;先放一键整合包链接：&lt;br&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMU9FNXFMMEtyZU8tQVNId202Wmw5Z0E/cHdkPW1xcGklRUYlQkMlODglRTUlQkElQTYlRTclOUIlOTglRTglQTYlODElRTYlQjAlQUElRTglQjYlODUlRTclQkElQTclRTQlQkMlOUElRTUlOTElOTglRTYlODklOEQlRTglODMlQkQlRTYlQkIlQTElRTklODAlOUYlRTQlQjglOEIlRTglQkQlQkQlRUYlQkMlODk=&#34;&gt;https://pan.baidu.com/s/1OE5qL0KreO-ASHwm6Zl9gA?pwd=mqpi（度盘要氪超级会员才能满速下载）&lt;/span&gt;&lt;br&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuMTIzcGFuLmNvbS9zLzV0SXFWdi1HVlJjdi5odG1sJUVGJUJDJTg4JUU1JThGJUFGJUU2JUJCJUExJUU5JTgwJTlGJUU0JUI4JThCJUU4JUJEJUJEJUU0JUJEJTg2JUU2JTk4JUFGJUU4JUE2JTgxJUU2JUIzJUE4JUU1JTg2JThDJUU4JUI0JUE2JUU1JThGJUI3JUVGJUJDJTg5JUVGJUJDJThDJUU2JThFJUE1JUU0JUI4JThCJUU2JTlEJUE1JUU1JTg2JTk5JUU0JUI4JTgwJUU1JTg2JTk5JUU0JUJEJUJGJUU3JTk0JUE4JUU2JTk2JUI5JUU2JUIzJTk1JUUzJTgwJTgy&#34;&gt;https://www.123pan.com/s/5tIqVv-GVRcv.html（可满速下载但是要注册账号），接下来写一写使用方法。&lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;分以下情况：&lt;/p&gt;
+&lt;h1&gt;我是小白，我的电脑显卡配置很好，我用的windows系统&lt;/h1&gt;
+直接下载楼上的一键整合包，按[视频](https://www.bilibili.com/video/BV1P541117yn/?spm_id_from=333.337.search-card.all.click)讲解操作。值得注意的是，在人声和背景音乐分离的步骤，我不清楚是不是bug会报错，如果你也报错的话可以试试这个[在线人声背景音乐分离网站](https://vocalremover.org/zh/)。按着视频讲解走就好
+&lt;hr&gt;
+&lt;h1&gt;我有一定代码知识，我会用git，我会用github&lt;/h1&gt;
+直接克隆项目地址：
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;git clone https://github.com/RVC-Boss/GPT-SoVITS.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;p&gt;创建环境&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;conda create -n gpt-sovits python=3.9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;conda activate gpt-sovits&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;pip install -r requirements.txt&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;conda install ffmpeg&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;下载以下两个文件到 GPT-SoVITS 项目根目录&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9sajE5OTUvVm9pY2VDb252ZXJzaW9uV2ViVUkvYmxvYi9tYWluL2ZmbXBlZy5leGU=&#34;&gt;https://huggingface.co/lj1995/VoiceConversionWebUI/blob/main/ffmpeg.exe&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9sajE5OTUvVm9pY2VDb252ZXJzaW9uV2ViVUkvYmxvYi9tYWluL2ZmcHJvYmUuZXhl&#34;&gt;https://huggingface.co/lj1995/VoiceConversionWebUI/blob/main/ffprobe.exe&lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;下载模型&lt;/p&gt;
+&lt;p&gt;在 GPT_SoVITS\pretrained_models 打开终端输入&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;git clone https://huggingface.co/lj1995/GPT-SoVITS&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;p&gt;因为 huggingface 是国外的，所以可能会克隆失败，那么我们换用国内的镜像&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;git lfs install&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;git clone https://www.modelscope.cn/models/AI-ModelScope/GPT-SoVITS&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;p&gt;下载完模型后，将模型文件拷到 GPT_SoVITS\pretrained_models 目录下。&lt;br&gt;
+接着到 modelscope 下载以下模型&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;git clone https://www.modelscope.cn/iic/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch.git&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;​&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;git clone https://www.modelscope.cn/iic/speech_fsmn_vad_zh-cn-16k-common-pytorch.git&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;​&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;git clone https://www.modelscope.cn/iic/punc_ct-transformer_zh-cn-common-vocab272727-pytorch.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;p&gt;将以上模型文件放到 tools/damo_asr/models 目录下。&lt;/p&gt;
+&lt;p&gt;如果训练的音频数据有杂音的话，还需要下载 UVR5 模型对音频先进行去噪处理，放到 tools/uvr5/uvr5_weights 目录下&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;git clone https://huggingface.co/lj1995/VoiceConversionWebUI&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;配置好环境和模型后，在终端输入&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;python webui.py&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;关于报错，如果是 “AssertionError: Torch not compiled with CUDA enabled”，说明装的 Torch 不是 CUDA 版本的，需要重装对应的 CUDA 版本的 pytorch。&lt;/p&gt;
+&lt;p&gt;如果在离线批量 ASR 时报错 “KeyError: ‘funasr-pipeline is not in the pipelines registry group auto-speech-recognition. Please make sure the correct version of ModelScope library is used.’”，&lt;br&gt;
+改 “tools\damo_asr\cmd-asr.py” 的代码：&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;path_asr=&amp;#x27;tools/damo_asr/models/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;path_vad=&amp;#x27;tools/damo_asr/models/speech_fsmn_vad_zh-cn-16k-common-pytorch&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;path_punc=&amp;#x27;tools/damo_asr/models/punc_ct-transformer_zh-cn-common-vocab272727-pytorch&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;path_asr=path_asr if os.path.exists(path_asr)else &amp;quot;damo/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;path_vad=path_vad if os.path.exists(path_vad)else &amp;quot;damo/speech_fsmn_vad_zh-cn-16k-common-pytorch&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;path_punc=path_punc if os.path.exists(path_punc)else &amp;quot;damo/punc_ct-transformer_zh-cn-common-vocab272727-pytorch&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;model = AutoModel(model=path_asr,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                  vad_model=path_vad,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                  punc_model=path_punc,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                  #spk_model=&amp;quot;damo/speech_campplus_sv_zh-cn_16k-common&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                  #spk_model_revision=&amp;quot;v2.0.0&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                  )&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;opt=[]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;for name in os.listdir(dir):&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    try:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        text = model.generate(input=&amp;quot;%s/%s&amp;quot;%(dir,name),&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                     batch_size_s=300, &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                     hotword=&amp;#x27;魔搭&amp;#x27;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        print(f&amp;quot;asr text:&amp;#123;text&amp;#125;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        opt.append(&amp;quot;%s/%s|%s|ZH|%s&amp;quot;%(dir,name,opt_name,text))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    except:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        print(traceback.format_exc())&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;接下来和整合包用法一模一样了（累死我了&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;我的显卡太垃圾了我想云端训练怎么办&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#我的显卡太垃圾了我想云端训练怎么办&#34;&gt;#&lt;/a&gt; 我的显卡太垃圾了，我想云端训练怎么办？&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMXNnNHkxMjdHRC8/c3BtX2lkX2Zyb209MzMzLjMzNy5zZWFyY2gtY2FyZC5hbGwuY2xpY2smYW1wO3ZkX3NvdXJjZT04ZGE3M2RhODhjYzhhZWE5MzZkNmNhZDhmMDBhNDQyZA==&#34;&gt;参考视频&lt;/span&gt;&lt;br&gt;
+给你们两个镜像：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY29kZXdpdGhncHUuY29tL2kvUlZDLUJvc3MvR1BULVNvVklUUy9HUFQtU29WSVRT&#34;&gt;镜像一&lt;/span&gt;&lt;br&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY29kZXdpdGhncHUuY29tL2kvUlZDLUJvc3MvR1BULVNvVklUUy9HUFQtU29WSVRTLU9mZmljaWFs&#34;&gt;镜像二&lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;我是linux系统用户或者macos用户想要本地训练&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#我是linux系统用户或者macos用户想要本地训练&#34;&gt;#&lt;/a&gt; 我是 linux 系统用户或者 macOS 用户，想要本地训练&lt;/h1&gt;
+&lt;p&gt;参考&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL1JWQy1Cb3NzL0dQVC1Tb1ZJVFMvYmxvYi9tYWluL2RvY3MvY24vUkVBRE1FLm1k&#34;&gt;官方文档&lt;/span&gt;，在 CSDN 逛一逛、知乎逛一逛，b 站逛一逛，写教程的人一大堆。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;我不管我就想白嫖直接玩&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#我不管我就想白嫖直接玩&#34;&gt;#&lt;/a&gt; 我不管，我就想白嫖，直接玩&lt;/h1&gt;
+&lt;p&gt;拿走不谢：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubW9kZWxzY29wZS5jbi9zdHVkaW9zL3h6am9zaC9CZXJ0LVZJVFMyL3N1bW1hcnk=&#34;&gt;https://www.modelscope.cn/studios/xzjosh/Bert-VITS2/summary&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cubW9kZWxzY29wZS5jbi9zdHVkaW9zL3h6am9zaC9HUFQtU29WSVRTL3N1bW1hcnk=&#34;&gt;https://www.modelscope.cn/studios/xzjosh/GPT-SoVITS/summary&lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;训练出的所有的模型请在法律范围内使用。花儿不哭大佬在视频结尾说的一番话，很耐人寻味。思考这种技术，如果落在某讯某飞手里，我们平常人估计很难接触这项技术，使用的话估计也是收费使用的。而开源项目则让这些技术更能服务于大家，而不是掌握在 “少数人手里”—— 开源项目也可以做得很好。背后咬牙切齿的，就是那批赚不到钱、割不到韭菜的人了。&lt;/p&gt;
+</content>
+        <category term="技术" />
+        <updated>2024-01-31T08:09:10.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://auroraisok.online/2023/12/28/%E3%80%90%E6%8A%80%E6%9C%AF%E5%90%91%E3%80%91%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/</id>
+        <title>【杂谈】破解压缩包密码</title>
+        <link rel="alternate" href="https://auroraisok.online/2023/12/28/%E3%80%90%E6%8A%80%E6%9C%AF%E5%90%91%E3%80%91%E7%A0%B4%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AF%86%E7%A0%81/"/>
+        <content type="html">&lt;p&gt;在碰见压缩包时，最尴尬的事情就是不知道解压码。于是我开始思考如何破解压缩包密码。于是有以下几个不太靠谱的方法，从简到难（正好展示一下 aurora 学习的成果）&lt;/p&gt;
+&lt;h1&gt;一、解压缩全能王、解压专家：云解密&lt;/h1&gt;
+&lt;p&gt;这两个软件具有 “云解密” 的功能，对于一些简单的文件还是可以破解的，而对于一些复杂的文件不起作用。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;二、暴力破解软件：Ziperello和ARCHPR&lt;/h1&gt;
+前者主要针对zip格式文件，后者能破解比较常见的的压缩文件。在暴力破解上，破解的速度与电脑配置、密码复杂程度相关（破解一串9位数密码花了4天）......
+&lt;p&gt;不过推荐这两款软件的原因，是可以使用密码本。因此建议，你每次解压完文件后，把解压码都记下来整成一个文档，只要密码够多破解速度越快（原理就是一个个试、不断试错）&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;三、Kali linux+Frackzip&lt;/h1&gt;
+这个需要一定的门槛，需要基础的linux系统知识。而且只能破解zip文件
+&lt;hr&gt;
+&lt;h2&gt;Kali预操作&lt;/h2&gt;
+Kali是黑客常用的操作系统，预装了300多个安全测试和渗透软件；Fcrackzip是一款专门破解zip类型压缩文件密码的工具，工具小巧方便、破解速度快，能使用字典和指定字符集破解，适用于linux、mac osx 系统。
+&lt;p&gt;首先假设你有一台安装了 kali 系统的虚拟机（我相信不会有人为了破解压缩包密码去学 kali)&lt;/p&gt;
+&lt;p&gt;先打开终端（ctrl+alt+T 或者右键打开），如果没设置过 root 账户，输入 &lt;code&gt;sudo passwd root&lt;/code&gt; ，密码输入你预装系统时给的（注意 linux 输密码时密码隐藏不显示，会造成一种没输密码的错觉，实际上输了），最后设置一下新密码。提示再输一次就再输一次。然后运行 &lt;code&gt;su - root&lt;/code&gt; ，输入密码，切换好 root 账户&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Kali linux+Frackzip：暴力破解&lt;/h2&gt;
+首先使用命令`apt-get update`  更新一下源
+&lt;img data-src=&#34;https://picdm.sunbangyan.cn/2023/12/28/cb3376fd2dc6837ab83459eac95cbaae.jpeg&#34; /&gt;
+使用命令 `apt-get install fcrackzip` 安装Frackzip
+&lt;img data-src=&#34;https://picdl.sunbangyan.cn/2023/12/28/931a4fc9b175263dc28c022a896fee4f.jpeg&#34; /&gt;
+执行 `fcrackzip –help` 命令来查看这款软件的命令参数
+&lt;img data-src=&#34;https://picdm.sunbangyan.cn/2023/12/28/486dc84cf64363eccb1cd7645ef9334f.jpeg&#34; /&gt;
+看到一堆英文，用我还没有考过四级的词汇翻译后，大概能看懂了。
+找到你要破解的zip文件，直接扔主目录就好，我命名为2.zip，密码我自己知道是数字，所以我用这串代码：
+&lt;pre&gt;&lt;code&gt; fcrackzip -b -c &#39;1&#39; -l 1-6 -u 2.zip 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1&gt;上边的那串代码语句说明&lt;/h1&gt;
+-b表示破解方式：暴力破解，-D是密码本破解，需要密码本，接下来我会讲怎么操作
+&lt;p&gt;-c 表示密码形式，只有数字我就填 1，可以根据需要来填，密码越复杂时间越长（直接上 aA1! ）&lt;br&gt;
+a 表示小写字母 [a-z]&lt;br&gt;
+ A 表示大写字母 [A-Z]&lt;br&gt;
+ 1 表示阿拉伯数字 [0-9]&lt;br&gt;
+! 感叹号表示特殊字符 [!:&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math xmlns=&#34;http://www.w3.org/1998/Math/MathML&#34;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;mtext&gt;表示包含冒号之后的字符（不能为二进制的空字符），例如&lt;/mtext&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;%&amp;amp;/()=?{[]}+*~#]
+: 表示包含冒号之后的字符（不能为二进制的空字符），例如  a1:&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.4306em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.6833em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;表示包含冒号之后的字符（不能为二进制的空字符），例如&lt;/span&gt;&lt;span class=&#34;mord mathnormal&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;:&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;%  表示 字符集包含小写字母、数字、$ 字符和 % 百分号 `&lt;/p&gt;
+&lt;p&gt;-l 表示密码长度，1-6 就表示密码在 1-6 位之间；&lt;/p&gt;
+&lt;p&gt;-u 是目标名称，接下来一切交给时间和你的电脑的性能处理。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Kali linux+Frackzip：使用密码本&lt;/h2&gt;
+首先我们创建一个字典，将其命名为pwd。（字典文件在百度上面有很多现成的，也可以使用kali里面的字典生成软件生成字典，我更推荐自己搜集密码制作密码本）
+&lt;p&gt;运行代码：    &lt;code&gt;fcrackzip -D -p /root/pwd -u 2.zip&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;-D 是使用密码破解，-p 是密码本路径。-u 是目标文件名称，理论上只要你密码本足够强大，有这个压缩包的密码就可以破解。&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;密码本破解，优点是快，缺点是如果密码本里没有压缩包的密码就破解不出来。暴力破解的时间与压缩包密码强度和电脑显卡性能有关&lt;/b&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;四、Kali+John破解压缩包的密码&lt;/h1&gt;
+相比于上一个方法，不是特别难。而且适用压缩文件类型多
+&lt;p&gt;这里依旧假设你有一台 kali linux 机器并且拥有了 root 权限（root 设置看前边）&lt;br&gt;
+ &lt;code&gt;zip2john license.zip &amp;gt;&amp;gt; passwd.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;解释一下，license.zip 是你压缩包文件的名字（我不管，都给我改成英文），&amp;quot;zip2&amp;quot; 表示破解的是 zip 文件（同理，rar 压缩包用 rar2）&lt;/p&gt;
+&lt;p&gt;运行代码 &lt;code&gt;john passwd.txt &lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;下边是我的运行程序结果：&lt;/p&gt;
+&lt;p&gt;[root@kali-hsun test]# john passwd.txt&lt;br&gt;
+Warning: invalid UTF-8 seen reading passwd.txt&lt;br&gt;
+Using default input encoding: UTF-8&lt;br&gt;
+Loaded 1 password hash (ZIP, WinZip [PBKDF2-SHA1 128/128 SSE2 4x])&lt;br&gt;
+Will run 6 OpenMP threads&lt;br&gt;
+Proceeding with single, rules:Wordlist&lt;br&gt;
+Press ‘q’ or Ctrl-C to abort, almost any other key for status&lt;br&gt;
+Almost done: Processing the remaining buffered candidate passwords, if any&lt;br&gt;
+Warning: Only 14 candidates buffered for the current salt, minimum 24&lt;br&gt;
+needed for performance.&lt;br&gt;
+Proceeding with wordlist:/usr/share/john/password.lst, rules:Wordlist&lt;br&gt;
+123321           (license.zip/license/license.dat)&lt;br&gt;
+1g 0:00:00:01 DONE 2/3 (2019-08-13 09:57) 0.5780g/s 16544p/s 16544c/s 16544C/s 123456…Open&lt;br&gt;
+Use the “–show” option to display all of the cracked passwords reliably&lt;br&gt;
+Session completed`&lt;/p&gt;
+&lt;p&gt;密码在哪？看见突出的 “123321           (license.zip/license/license.dat)” 了吗？密码就是 123321   在 “rules:Wordlist” 下边会爆出密码&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;五、windows+John+hashcat破解密码&lt;/h1&gt;
+&lt;p&gt;已经累死不想写了… 参考&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMVViNHkxdjdtMS8/c2hhcmVfc291cmNlPWNvcHlfd2ViJmFtcDt2ZF9zb3VyY2U9YTMzMmRmMjQ2YzA0MjExY2I2Mzk2ZTRlMjBmNGFmNjk=&#34;&gt;视频&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;值得提醒的是，你电脑里要预先安装好 python 和 perl,hash 值取第一串就好（这东西说实话我也不是特别明白，评论区大神多），原理上和第四种方法一样&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;总结&lt;/h1&gt;
+以上的几种方法，最常用的是第一种，最简单最方便。第二种用的人就比较少了，但并不麻烦。第三第四种，光是kali系统安装估计就能劝退很多人（谁会为了破解个解压码学Kali啊喂！！），第五种有些繁琐......
+&lt;p&gt;我建议平下里可以养成收集解压码的习惯（哪个 ** 发文件不发解压码，可恶），暴力破解花费的时间可长可短，密码本破解就比较快了。但究其根本，只要发资源的人能说清解压码是什么也不用这么麻烦了。&lt;/p&gt;
+</content>
+        <category term="技术" />
+        <updated>2023-12-28T06:25:41.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://auroraisok.online/2023/12/19/Galgame-%E6%B1%89%E5%8C%96%E7%A0%B4%E8%A7%A3%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%EF%BC%9A%E4%BB%A5-BGI-%E4%B8%BA%E4%BE%8B%EF%BC%8C%E4%BB%8E%E8%A7%A3%E5%8C%85%E5%88%B0%E6%B5%8B%E8%AF%95/</id>
+        <title>Galgame 汉化破解初级教程：以 BGI 为例，从解包到测试</title>
+        <link rel="alternate" href="https://auroraisok.online/2023/12/19/Galgame-%E6%B1%89%E5%8C%96%E7%A0%B4%E8%A7%A3%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%EF%BC%9A%E4%BB%A5-BGI-%E4%B8%BA%E4%BE%8B%EF%BC%8C%E4%BB%8E%E8%A7%A3%E5%8C%85%E5%88%B0%E6%B5%8B%E8%AF%95/"/>
+        <content type="html">&lt;p&gt;前言：&lt;br&gt;
+最近几天在推《樱之诗》，顺便扒出来了《樱之诗》的黑历史 ——《春之雪》—— 就是当年买《超级糖果》送的。于是通过不知名手段下载到了一份玩，却发现这款 2008 年的 樱之诗体验版 无人汉化、连机翻都没有。作为一名医学生，我觉得如果能破解这款游戏并用 GPT 翻译一下，可能会对我的解剖学有帮助。于是扒出了当年澄空的帖子，试图对《春之雪》“鞭尸”&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;今天用 fxckBGI2.4 把文件全部解包出来，解包工具很多，garbro 也可以。接下来再研究如何提取文本和免封包读取 。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;以下内容转载自澄空学园（&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYnMuc3VtaXNvcmEubmV0L3JlYWQucGhwP3RpZD0xMTA0MjM1MSVFRiVCQyU4OQ==&#34;&gt;https://bbs.sumisora.net/read.php?tid=11042351）&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;囧，CK 这边的编辑器是 WindCode，也不能直接插入 HTML，只能大概排一下版了。对排版和格式有高要求的同学请看这里。&lt;/p&gt;
+&lt;p&gt;转载请注明出处。&lt;/p&gt;
+&lt;p&gt;Ever tried. Ever failed.&lt;br&gt;
+No matter. Try again.&lt;br&gt;
+Fail again. Fail better.&lt;/p&gt;
+&lt;p&gt;一直想写一篇面向新手的 Galgame 汉化教程，但一直苦于没有时间。现在终于考完了试，申请也告一段落，这才抽了点时间来写这篇文。还有，工口你认真学，今后杏爱会的程序就看你的了。&lt;/p&gt;
+&lt;p&gt;本教程假设你已经满足以下条件：&lt;/p&gt;
+&lt;p&gt;玩过 Galgame，了解一般 Galgame 资源存储的方式&lt;br&gt;
+会一门编程语言，VB6 和 JavaScript 等前端语言除外&lt;br&gt;
+能看懂用其它编程语言写出的源代码，此处特指用 C++&lt;br&gt;
+ 能看懂汇编，51 单片机的汇编语言就行&lt;br&gt;
+懂数据结构&lt;br&gt;
+知道什么是字符编码&lt;br&gt;
+英语水平还说得过去&lt;br&gt;
+懂一点儿日语&lt;/p&gt;
+&lt;p&gt;本教程中使用的名词：&lt;/p&gt;
+&lt;p&gt;封包：指游戏的资源文件在游戏安装目录下的保存形式&lt;br&gt;
+脚本：含有二进制控制符和纯文本的文件&lt;br&gt;
+文本：从脚本中提取，人类能够读懂的文本文件&lt;/p&gt;
+&lt;p&gt;首先来看看破解都要干啥：&lt;/p&gt;
+&lt;p&gt;解开游戏的封包文件&lt;br&gt;
+从提取出的脚本中提取出文本&lt;br&gt;
+从提取出的脚本中提取出图片&lt;br&gt;
+把翻译好的文本写回到脚本里&lt;br&gt;
+把新的图片和脚本放回到封包里&lt;br&gt;
+修改游戏主程序，使之能正常读取中文&lt;/p&gt;
+&lt;p&gt;好，让我们开始吧。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;准备&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们以方糖社的《花色ヘプタグラム》为例进行实战。不过在开始之前，你需要准备几种工具：&lt;br&gt;
+一款支持多语言编码的文本编辑器，例如 Notepad2&lt;br&gt;
+ 一款十六进制编辑器，最好也能支持多语言编码，例如 010Editor&lt;br&gt;
+ 一款反汇编工具，例如 OllyDbg&lt;br&gt;
+ 你常用的 IDE，比如 Visual Studio&lt;br&gt;
+ 工具的用法在此不再赘述，请自行谷歌。&lt;br&gt;
+安装游戏后打开游戏的主目录，你会发现这些文件（已略去部分无用文件）：&lt;br&gt;
+Copy code&lt;br&gt;
+2012/09/26  16:33               643 autoload.arc&lt;br&gt;
+2012/09/26  16:33         1,817,109 data01000.arc&lt;br&gt;
+2012/09/26  16:33       876,414,725 data02000.arc&lt;br&gt;
+2012/09/26  16:33       654,502,744 data02001.arc&lt;br&gt;
+2012/09/26  16:33     1,179,169,979 data02010.arc&lt;br&gt;
+2012/09/26  16:33        12,594,853 data02050.arc&lt;br&gt;
+2012/09/26  16:33       299,065,396 data02100.arc&lt;br&gt;
+2012/09/26  16:33        21,874,416 data02950.arc&lt;br&gt;
+2012/09/26  16:33        14,331,692 data03000.arc&lt;br&gt;
+2012/09/26  16:33       922,747,352 data04000.arc&lt;br&gt;
+2012/09/26  16:33        75,902,855 data05000.arc&lt;br&gt;
+2012/09/26  16:33           860,160 Heptagram.exe&lt;br&gt;
+2012/09/26  16:33        34,148,877 sysgrp.arc&lt;br&gt;
+2012/09/26  16:33           290,498 sysprg.arc&lt;br&gt;
+2012/09/26  16:33         3,702,778 syssnd.arc&lt;br&gt;
+2012/09/26  16:33             2,825 system.arc&lt;/p&gt;
+&lt;p&gt;很明显，Heptagram.exe 是游戏的主程序，*.arc 是游戏的封包文件。接下来，我们开始正式的流程。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;破解&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;2.1. 运行破解&lt;/p&gt;
+&lt;p&gt;双击 Heptagram.exe 来测试一下，发现没有出现游戏主窗口；而用 AppLocate 工具加载后却能够正常运行。这说明开发商在游戏中进行了某种检查，以防止游戏在日本日外的国家运行（原因大家都知道，而且还有家中二公司把这点做到了极致）。&lt;/p&gt;
+&lt;p&gt;好，让我们想一想，如何得到当前操作系统的区域信息？&lt;/p&gt;
+&lt;p&gt;使用 GetUserDefaultLCID API&lt;br&gt;
+ 使用 GetSystemDefaultLangID API&lt;br&gt;
+ 使用 GetSystemDefaultUILanguage API&lt;br&gt;
+ 使用 GetTimeZoneInformation API&lt;br&gt;
+ 使用 MultiByteToWideChar API 转化一个字符串，检查结果&lt;br&gt;
+等等……&lt;/p&gt;
+&lt;p&gt;透露一下，BGI 引擎使用 GetSystemDefaultLangID 来确定当前操作系统的区域。&lt;br&gt;
+运行 OllyDbg，载入 Heptagram.exe，如图。&lt;br&gt;
+&lt;img data-src=&#34;https://picdm.sunbangyan.cn/2023/12/19/8b656a0ea69cd667b73130050d1fe0b4.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;按下 CTRL + N，在打开的 API 列表中找到 GetSystemDefaultLangID，右键选择 “在每个参考上设置断点”。如图。&lt;br&gt;
+&lt;img data-src=&#34;https://picdl.sunbangyan.cn/2023/12/19/0ac321e900d869173b8b80bdfabb318c.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;双击 Breakpoints 窗口中的项，来到 GetSystemDefaultLangID 的调用位置：&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Copy code&lt;br&gt;
+00455CE0  /$  FF15 D0E04A00 call    dword ptr [&amp;lt;&amp;amp;KERNEL32.GetSystemD&amp;gt;; [GetSystemDefaultLangID&lt;br&gt;
+00455CE6  |.  8B5424 04     mov     edx, dword ptr [esp+4]&lt;br&gt;
+00455CEA  |.  25 FF030000   and     eax, 3FF&lt;br&gt;
+00455CEF  |.  33C9          xor     ecx, ecx&lt;br&gt;
+00455CF1  |.  3BC2          cmp     eax, edx&lt;br&gt;
+00455CF3  |.  0F94C1        sete    cl&lt;br&gt;
+00455CF6  |.  8BC1          mov     eax, ecx&lt;br&gt;
+00455CF8  .  C3            retn&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;在简体中文环境下， GetSystemDefaultLangID 返回值是 0x804，而在日语环境下，返回值是 0x411。那么怎么改？很简单，直接把 0x411 写入返回值的寄存器就行了。这样，无论是什么语言的系统，都会被认为是日语系统。&lt;br&gt;
+双击 00455CE0 这一行，把汇编改为 mov eax, 411。改好后的这部分代码如下所示：&lt;br&gt;
+Copy code&lt;br&gt;
+00455CE0      B8 11040000   mov     eax, 411&lt;br&gt;
+00455CE5      90            nop                ; 修改后的代码比原先的要短，所以剩余的部分会用 nop 补齐&lt;br&gt;
+ 00455CE6  |.  8B5424 04     mov     edx, dword ptr [esp+4]&lt;br&gt;
+00455CEA  |.  25 FF030000   and     eax, 3FF&lt;br&gt;
+00455CEF  |.  33C9          xor     ecx, ecx&lt;br&gt;
+00455CF1  |.  3BC2          cmp     eax, edx&lt;br&gt;
+00455CF3  |.  0F94C1        sete    cl&lt;br&gt;
+00455CF6  |.  8BC1          mov     eax, ecx&lt;br&gt;
+00455CF8  .  C3            retn&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;改好之后，在 CPU 窗口右键，复制到可执行文件 -&amp;gt; 所有修改 -&amp;gt; 全部复制，再在弹出的窗口中右键，保存文件，命名为 Heptagram_NoCheck.exe，完成后退出 OllyDbg。&lt;/p&gt;
+&lt;p&gt;接下来找到刚保存的 Heptagram_NoCheck.exe，双击运行，游戏界面是不是出来了？&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;2.2. 游戏脚本&lt;/p&gt;
+&lt;p&gt;2.2.1. 解包&lt;/p&gt;
+&lt;p&gt;这一步可以说是整个汉化过程中最简单的了（当然，这是建立在前辈们的辛苦分析上的）：用老毛子出品的 AnimED 即可（不推荐使用 Crass）。&lt;/p&gt;
+&lt;p&gt;从 BGI 汉化经验来看，脚本文件一般都保存在前几个封包中（本游戏的脚本就在 data01000.arc 中）。如果你找不到，你可以把封包逐一拖到 ExtractData 窗口中观察。单个脚本的大小一般不会超过 200KB。&lt;/p&gt;
+&lt;p&gt;使用 AnimED 解开 data01000.arc ，拿到脚本（同样，略去了部分文件）：&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Copy code&lt;br&gt;
+2013/01/13  16:31            64,740 a01&lt;br&gt;
+2013/01/13  16:31            72,838 a02&lt;br&gt;
+2013/01/13  16:31            76,598 a03&lt;br&gt;
+2013/01/13  16:31             6,433 b06_3&lt;br&gt;
+2013/01/13  16:31            47,365 b07_1&lt;br&gt;
+2013/01/13  16:31            71,012 b07_2&lt;br&gt;
+2013/01/13  16:31            92,156 c06_2&lt;br&gt;
+2013/01/13  16:31            77,374 d09&lt;br&gt;
+2013/01/13  16:31            79,352 d10_1&lt;br&gt;
+2013/01/13  16:31             1,712 main&lt;br&gt;
+2013/01/13  16:31             3,150 s_ci_02&lt;br&gt;
+2013/01/13  16:31           110,513 Yuzuriha&lt;br&gt;
+2013/01/13  16:31           128,763 _01&lt;br&gt;
+2013/01/13  16:31            93,819 _02&lt;br&gt;
+2013/01/13  16:31           154,264 _03&lt;br&gt;
+2013/01/13  16:31           100,339 _07&lt;br&gt;
+2013/01/13  16:31           268,696 _08&lt;br&gt;
+2013/01/13  16:31            28,475 _10_2&lt;br&gt;
+ 打开准备好的 Notepad2，载入其中的 _01 文件，然后按下 F8，选择 Japanese (Shift-JIS)。你会发现，这个文件就是游戏的第一章：&lt;/p&gt;
+&lt;p&gt;2.2.2. 二进制脚本分析&lt;/p&gt;
+&lt;p&gt;在打开的 _01 文件中，你可以看到不可读的二进制代码和可读的文本混在一起。接下来，打开你的十六进制编辑器，载入_01 文件。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://picdl.sunbangyan.cn/2023/12/19/4a1a5572d59cccf5c3d0f2de332175d8.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如图所示，BGI 脚本分为四部分：&lt;/p&gt;
+&lt;p&gt;头部 Magic：用于校验该文件的类型&lt;br&gt;
+脚本头部：定义了该脚本所需的全局变量&lt;br&gt;
+指令部分：控制游戏的流程&lt;br&gt;
+文本列表：我们最感兴趣的东西&lt;/p&gt;
+&lt;p&gt;在游戏执行中，引擎不断地读取指令部分中的指令，形成了游戏的时间线。 可以看出，0x00000003 之后的四字节（DWORD）和下面文本列表中字符串 _01.txt （起始地址为 0x18D1C）有关：&lt;br&gt;
+Copy code&lt;br&gt;
+0x18D1C = 0x1C (MAGIC 长度) + 0x34 (头部长度) + 0x18CCC (0x00000003 之后的四字节)&lt;br&gt;
+ 如果你不放心，可以再找几句话计算看看。&lt;br&gt;
+那么，思路就确定下来了：&lt;br&gt;
+逐个读取所有的 0x00000003，把之后的四字节作为地址，修正后用来查找目标处的字符串。也就是&lt;br&gt;
+ Copy code&lt;br&gt;
+String = GetStringAt(GetUnsignedIntAt(AddressOfAny(0x03) + 4) + LengthOf(magic) + LengthOf(header))&lt;/p&gt;
+&lt;p&gt;接下来，用你最擅长的编程语言写一个提取文本的工具吧。&lt;/p&gt;
+&lt;p&gt;2.3. 图片提取与转化&lt;/p&gt;
+&lt;p&gt;BGI 引擎的图片有两种格式：标准 BMP/PNG 和去掉文件头的 BMP。前者用于 CG 和立绘，后者用于系统图片（sysgrp.arc 中的图片文件）。&lt;br&gt;
+注意：部分图片的像素排序是反转的，保存时也要保持反转排序（在 PS 的保存窗口中勾选翻转行序）&lt;br&gt;
+注意 2：如果图片含有 Alpha 通道，那么 Alpha 通道也要修！&lt;/p&gt;
+&lt;p&gt;2.3.1. 标准 BMP/PNG 文件&lt;/p&gt;
+&lt;p&gt;这些文件很好判断。对于 BMP 文件，文件头部总是 BM 两个字母；而对于 PNG 格式，文件头总是 {0x89, 0x50, 0x4E, 0x47}（写成中文的话就是 塒 NG）。给解出来的文件添加相应后缀，用 Photoshop 打开即可。&lt;/p&gt;
+&lt;p&gt;2.3.2. 系统图片&lt;/p&gt;
+&lt;p&gt;让我们再次祭出十六进制编辑器。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://picdl.sunbangyan.cn/2023/12/19/a7f41c7e8ece40668bb7f24c48e27a4f.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如图，文件的钱六个字节分别是图片宽度，图片高度和色深。可以看出，sys_title_006 图片是一个 1280 * 720 的 32 位图片。&lt;br&gt;
+再次使用你最拿手的编程语言，写一个小程序来修复 BMP 文件头吧：请阅读 BeginBuildBMP 函数的代码。&lt;/p&gt;
+&lt;p&gt;至此，资源破解结束。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;资源回封&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;3.1. 游戏脚本&lt;/p&gt;
+&lt;p&gt;脚本的回封很简单，照着提取工具写一个对应的逆运算就行了。注意，新文件中的汉字必须是 GBK 编码。&lt;/p&gt;
+&lt;p&gt;3.2. 图片&lt;/p&gt;
+&lt;p&gt;3.2.1. 标准图片&lt;/p&gt;
+&lt;p&gt;去掉后缀就行。&lt;/p&gt;
+&lt;p&gt;3.2.2. 系统图片&lt;/p&gt;
+&lt;p&gt;刚刚我们添加了 BMP Header，现在我们需要一个去掉 BMP Header 的工具：请阅读 BeginBuildResource 函数的代码。&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;测试运行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;上面，我&lt;/p&gt;
+&lt;p&gt;“汉化” 了一张 CG （ev_warn02 来自 data02010.arc）：&lt;/p&gt;
+&lt;p&gt;汉化了一张 系统图 （sys_title_006 来自 sysgrp.arc）：&lt;/p&gt;
+&lt;p&gt;汉化了 _01 脚本的前几句话：&lt;/p&gt;
+&lt;p&gt;把 ev_warn02 的后缀去掉，把 sys_title_006 的文件头去掉，把文本回写到 _01 中，生成新文件再重新命名为 _01。&lt;br&gt;
+完成后，把三个文件重命名为原本的名字，复制到游戏目录下。双击游戏，运行。&lt;/p&gt;
+&lt;p&gt;图片很正常，能用。可是脚本就没这么方便了：&lt;/p&gt;
+&lt;p&gt;出现了乱码。&lt;br&gt;
+这就不得不说字符编码和边界检查了。点击这里和这里，仔细阅读肠姐姐的文章。&lt;br&gt;
+BGI 引擎中存在多处校验边界的代码，具体可以通过 OllyDbg 查找（CTRL+L）cmp al, 0A0 来定位（《花色ヘプタグラム》中只有两处）。&lt;br&gt;
+其它需要修改的地方：&lt;br&gt;
+CreateFontA 的 fdwCharSet 参数：改为 86 （其他游戏可能会有 CreateFontIndirectA 函数，后者要麻烦一些）&lt;br&gt;
+MultiByteToWideChar 的 Charset 参数：改为 3A8&lt;br&gt;
+cmp eax, 0EF40 ; 改为 0FE40&lt;br&gt;
+cmp ebx, 0EF40 ; 改为 0FE40&lt;br&gt;
+cmp ebx, 8140 ; 8140 是 Shift-JIS 编码中的全角空格，所以此处应改为 0A1A1 （GBK 的全角空格）&lt;/p&gt;
+&lt;p&gt;修改后保存主程序，再次运行，一切正常。&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;后续工作&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;5.1. 字体&lt;/p&gt;
+&lt;p&gt;用十六进制编辑器打开刚刚运行成功的主程序，把所有ＭＳ 明朝（俵俽 柧挬），ＭＳ ゴシック（俵俽 僑僔僢僋），MS Mincho，MS Gothic 改为黑体，或 SimHei，别忘了把空余的字节全填上 0x00。&lt;/p&gt;
+&lt;p&gt;5.2. 窗口标题&lt;/p&gt;
+&lt;p&gt;从 system.arc 中得到 ipl._bp，用十六进制编辑器修改字符串。&lt;/p&gt;
+&lt;p&gt;5.3. （按需）人名乱码，下一句提示符乱码，方括号乱码&lt;/p&gt;
+&lt;p&gt;从 sysprg.arc 中提取相应的 ._bp 文件，用十六进制编辑器修改。下面的是完成品，补丁质量：&lt;/p&gt;
+&lt;p&gt;5.4. 补丁的注意事项&lt;/p&gt;
+&lt;p&gt;既然 BGI 不用封包就能读取汉化后的文件，那么在发补丁时怎么办？打补丁之后，游戏目录不得一下子多出几百个文件么？孩子，你需要 MoleBox。&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;接下来？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果你觉得自己需要再次学习基本知识，请把这里所有回复大于 2 的主题帖读完。&lt;br&gt;
+如果你觉得自己能够挑战更高难度的破解，请点这里。&lt;br&gt;
+如果你有任何疑问，请留言。&lt;/p&gt;
+</content>
+        <category term="技术" />
+        <updated>2023-12-19T14:59:26.000Z</updated>
+    </entry>
+</feed>

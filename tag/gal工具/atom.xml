@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://auroraisok.online</id>
+    <title>理理の图书馆 • Posts by &#34;gal工具&#34; tag</title>
+    <link href="https://auroraisok.online" />
+    <updated>2023-07-24T02:07:34.000Z</updated>
+    <category term="技术" />
+    <category term="日常" />
+    <category term="杂谈" />
+    <category term="galgame" />
+    <category term="gal" />
+    <category term="网站" />
+    <category term="视觉小说技术，视觉小说测评" />
+    <category term="gal工具" />
+    <category term="gal测评" />
+    <category term="QQ机器人" />
+    <category term="闲聊" />
+    <category term="Gal杂谈" />
+    <category term="视觉小说工具" />
+    <category term="随想" />
+    <category term="技术向" />
+    <entry>
+        <id>https://auroraisok.online/2023/07/24/%E4%B8%AD%E4%BA%8C%E7%A4%BE%E8%A7%A3%E5%8C%85%E7%A5%9E%E5%99%A8fuckpaz/</id>
+        <title>中二社解包神器fuckpaz</title>
+        <link rel="alternate" href="https://auroraisok.online/2023/07/24/%E4%B8%AD%E4%BA%8C%E7%A4%BE%E8%A7%A3%E5%8C%85%E7%A5%9E%E5%99%A8fuckpaz/"/>
+        <content type="html">&lt;p&gt;之前在&lt;em&gt;澄空学院&lt;/em&gt;解包研讨找到的工具， Garbro 解不全（pazA,pazB）刚开始我不会用，因为连教程都找不到，自己又太菜。。研究好长时间才弄明白，于是写了一篇博文。在 b 站也有发过。。可以看这个&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3JlYWQvY3YyMTM0NTA1Nw==&#34;&gt;https://www.bilibili.com/read/cv21345057&lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i0.hdslb.com/bfs/article/f672f000ad94738052eed9060387ab569e845326.png@1256w_654h_!web-article-pic.webp&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;首先把 fuckpaz 与 paz 文件放在同一目录下&lt;br&gt;
+最好把 paz 文件复制一下，单独和 fuckpaz.exe 放一起。否则到时候可能分不清游戏本体和解包后的文件（就像我一样）&lt;/p&gt;
+&lt;p&gt;然后，按键盘上的 win+R 键，调出运行，cmd，确定&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i0.hdslb.com/bfs/article/5b4b96f9a21f789460779a0fed144c103bb225f1.png@!web-article-pic.webp&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;输入   cd /d  你存放的目录，此处以本人的的电脑为例。 或者直接在目录上调用 cmd&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i0.hdslb.com/bfs/article/watermark/33efd91e28a4ffec5ca017f12a1b9c96fd1174ed.png@1256w_828h_!web-article-pic.webp&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;目录后输入 fuckpaz.exe, 回车键。接下来的页面可能是这样的（如果不是就按这张图上的数字走。）&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i0.hdslb.com/bfs/article/d9e679d8185ac98de45d4278157d0e7fb10f8ef7.png@!web-article-pic.webp&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这些数字，对应的是可解包的游戏的参数。这里我要解包的是 trionline 的 mov.paz 文件，找到参数，21. 因此，输入 fuckpaz.exe mov.paz 21 回车，当然，不同的游戏和文件输入的也不同。比如我要解包 eden 的 voice.paz 文件，就输入 fuckpaz.exe voice.paz 7.&lt;/p&gt;
+&lt;p&gt;之后就能找到我们解包后的文件，在 exe 目录下，&lt;strong&gt;也就是和 fuckpaz.exe 在同一个目录。&lt;/strong&gt;（推荐将 fuckpaz 与要解包的文件单独放一起，这样不会乱）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;如果文件后缀是 pazA/pazB 之类的，比如 mov.paz、mov.pazA、mov.pazB, 就把它们全放在同一个文件夹，cmd 输入 “fuckpaz.exe mov.paz 数字”。&lt;/p&gt;
+</content>
+        <category term="gal工具" />
+        <updated>2023-07-24T02:07:34.000Z</updated>
+    </entry>
+</feed>
