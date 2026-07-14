@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://auroraisok.online</id>
-    <title>理理の图书馆 • Posts by &#34;gal测评&#34; tag</title>
-    <link href="https://auroraisok.online" />
+    <id>https://blog.yinghu.asia</id>
+    <title>auroraの失落之境 • Posts by &#34;gal测评&#34; tag</title>
+    <link href="https://blog.yinghu.asia" />
     <updated>2023-08-06T07:19:24.000Z</updated>
-    <category term="技术" />
     <category term="日常" />
+    <category term="技术" />
     <category term="杂谈" />
-    <category term="galgame" />
     <category term="gal" />
     <category term="网站" />
+    <category term="galgame" />
     <category term="视觉小说技术，视觉小说测评" />
     <category term="gal工具" />
     <category term="gal测评" />
     <category term="QQ机器人" />
-    <category term="闲聊" />
     <category term="Gal杂谈" />
+    <category term="闲聊" />
     <category term="视觉小说工具" />
     <category term="随想" />
     <category term="技术向" />
     <entry>
-        <id>https://auroraisok.online/2023/08/06/%E6%8E%A8%E8%8D%90%E7%BB%99%E6%96%B0%E4%BA%BA%E7%9A%84%E5%87%A0%E9%83%A8galgame/</id>
+        <id>https://blog.yinghu.asia/2023/08/06/%E6%8E%A8%E8%8D%90%E7%BB%99%E6%96%B0%E4%BA%BA%E7%9A%84%E5%87%A0%E9%83%A8galgame/</id>
         <title>推荐给新人的几部galgame</title>
-        <link rel="alternate" href="https://auroraisok.online/2023/08/06/%E6%8E%A8%E8%8D%90%E7%BB%99%E6%96%B0%E4%BA%BA%E7%9A%84%E5%87%A0%E9%83%A8galgame/"/>
+        <link rel="alternate" href="https://blog.yinghu.asia/2023/08/06/%E6%8E%A8%E8%8D%90%E7%BB%99%E6%96%B0%E4%BA%BA%E7%9A%84%E5%87%A0%E9%83%A8galgame/"/>
         <content type="html">&lt;p&gt;#前言&lt;/p&gt;
 &lt;p&gt;关于推荐类视频和文章，其实网上有很多。这里结合一下自己的理解写一写自己的看法。&lt;/p&gt;
 &lt;p&gt;依我看来，萌新入坑，要结合实际情况吧。《樱之诗》、《樱花萌放》、《爱上火车》，这类作品你说它好不好？肯定是优秀不可多得的作品，但对于一个刚入坑的萌新，并不一定很适合：推《樱花萌放》，我被雪人的剧本差点劝退；推《爱上火车》，前期的日常不免让人觉得有些枯燥。刚入坑就啃百万文字量的剧本，感觉不是特别好。&lt;/p&gt;
@@ -68,9 +68,9 @@
         <updated>2023-08-06T07:19:24.000Z</updated>
     </entry>
     <entry>
-        <id>https://auroraisok.online/2023/07/21/%E4%BA%9A%E6%89%98%E8%8E%89%20Trinoline%20%E6%9D%82%E8%B0%88/</id>
+        <id>https://blog.yinghu.asia/2023/07/21/%E4%BA%9A%E6%89%98%E8%8E%89%20Trinoline%20%E6%9D%82%E8%B0%88/</id>
         <title>亚托莉 Trinoline 杂谈</title>
-        <link rel="alternate" href="https://auroraisok.online/2023/07/21/%E4%BA%9A%E6%89%98%E8%8E%89%20Trinoline%20%E6%9D%82%E8%B0%88/"/>
+        <link rel="alternate" href="https://blog.yinghu.asia/2023/07/21/%E4%BA%9A%E6%89%98%E8%8E%89%20Trinoline%20%E6%9D%82%E8%B0%88/"/>
         <content type="html">&lt;p&gt;明年《亚托莉：我挚爱的时光》动画化即将播出。于此之际感想颇多。亚托莉为玩家带来了什么？她在 galgame 历程上有何意义？引起我的思考。那个睡不醒又活泼的 “萝卜子” 要被做成动画了。希望动画能够大获成功，动画党也能了解、接触游戏。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;欢迎回来，夏生先生。&lt;/p&gt;

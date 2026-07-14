@@ -1,31 +1,31 @@
 <?xml version="1.0"?>
 <rss version="2.0">
     <channel>
-        <title>理理の图书馆 • Posts by &#34;gal工具&#34; tag</title>
-        <link>https://auroraisok.online</link>
+        <title>auroraの失落之境 • Posts by &#34;gal工具&#34; tag</title>
+        <link>https://blog.yinghu.asia</link>
         <description>水仙，花语是，珍爱自己</description>
         <language>zh-CN</language>
         <pubDate>Mon, 24 Jul 2023 10:07:34 +0800</pubDate>
         <lastBuildDate>Mon, 24 Jul 2023 10:07:34 +0800</lastBuildDate>
-        <category>技术</category>
         <category>日常</category>
+        <category>技术</category>
         <category>杂谈</category>
-        <category>galgame</category>
         <category>gal</category>
         <category>网站</category>
+        <category>galgame</category>
         <category>视觉小说技术，视觉小说测评</category>
         <category>gal工具</category>
         <category>gal测评</category>
         <category>QQ机器人</category>
-        <category>闲聊</category>
         <category>Gal杂谈</category>
+        <category>闲聊</category>
         <category>视觉小说工具</category>
         <category>随想</category>
         <category>技术向</category>
         <item>
-            <guid isPermalink="true">https://auroraisok.online/2023/07/24/%E4%B8%AD%E4%BA%8C%E7%A4%BE%E8%A7%A3%E5%8C%85%E7%A5%9E%E5%99%A8fuckpaz/</guid>
+            <guid isPermalink="true">https://blog.yinghu.asia/2023/07/24/%E4%B8%AD%E4%BA%8C%E7%A4%BE%E8%A7%A3%E5%8C%85%E7%A5%9E%E5%99%A8fuckpaz/</guid>
             <title>中二社解包神器fuckpaz</title>
-            <link>https://auroraisok.online/2023/07/24/%E4%B8%AD%E4%BA%8C%E7%A4%BE%E8%A7%A3%E5%8C%85%E7%A5%9E%E5%99%A8fuckpaz/</link>
+            <link>https://blog.yinghu.asia/2023/07/24/%E4%B8%AD%E4%BA%8C%E7%A4%BE%E8%A7%A3%E5%8C%85%E7%A5%9E%E5%99%A8fuckpaz/</link>
             <category>gal工具</category>
             <pubDate>Mon, 24 Jul 2023 10:07:34 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;之前在&lt;em&gt;澄空学院&lt;/em&gt;解包研讨找到的工具， Garbro 解不全（pazA,pazB）刚开始我不会用，因为连教程都找不到，自己又太菜。。研究好长时间才弄明白，于是写了一篇博文。在 b 站也有发过。。可以看这个&lt;/p&gt;

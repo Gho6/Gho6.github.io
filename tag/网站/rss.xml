@@ -1,31 +1,31 @@
 <?xml version="1.0"?>
 <rss version="2.0">
     <channel>
-        <title>理理の图书馆 • Posts by &#34;网站&#34; tag</title>
-        <link>https://auroraisok.online</link>
+        <title>auroraの失落之境 • Posts by &#34;网站&#34; tag</title>
+        <link>https://blog.yinghu.asia</link>
         <description>水仙，花语是，珍爱自己</description>
         <language>zh-CN</language>
         <pubDate>Sat, 29 Jun 2024 11:49:57 +0800</pubDate>
         <lastBuildDate>Sat, 29 Jun 2024 11:49:57 +0800</lastBuildDate>
-        <category>技术</category>
         <category>日常</category>
+        <category>技术</category>
         <category>杂谈</category>
-        <category>galgame</category>
         <category>gal</category>
         <category>网站</category>
+        <category>galgame</category>
         <category>视觉小说技术，视觉小说测评</category>
         <category>gal工具</category>
         <category>gal测评</category>
         <category>QQ机器人</category>
-        <category>闲聊</category>
         <category>Gal杂谈</category>
+        <category>闲聊</category>
         <category>视觉小说工具</category>
         <category>随想</category>
         <category>技术向</category>
         <item>
-            <guid isPermalink="true">https://auroraisok.online/2024/06/29/%E6%90%AD%E5%BB%BAflarum%E8%AE%BA%E5%9D%9B/</guid>
+            <guid isPermalink="true">https://blog.yinghu.asia/2024/06/29/%E6%90%AD%E5%BB%BAflarum%E8%AE%BA%E5%9D%9B/</guid>
             <title>搭建flarum论坛</title>
-            <link>https://auroraisok.online/2024/06/29/%E6%90%AD%E5%BB%BAflarum%E8%AE%BA%E5%9D%9B/</link>
+            <link>https://blog.yinghu.asia/2024/06/29/%E6%90%AD%E5%BB%BAflarum%E8%AE%BA%E5%9D%9B/</link>
             <category>网站</category>
             <pubDate>Sat, 29 Jun 2024 11:49:57 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;本站专属论坛已经建成:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9hdXJvcmF5aC54eXovJUVGJUJDJThDJUU2JUFDJUEyJUU4JUJGJThFJUU1JTkwJTg0JUU0JUJEJThEJUU4JUFFJUJGJUU5JTk3JUFFJUVGJUJDJTgx&#34;&gt;https://aurorayh.xyz/，欢迎各位访问！&lt;/span&gt;&lt;/p&gt;
@@ -38,9 +38,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://auroraisok.online/2024/06/22/%E4%BD%8E%E6%88%90%E6%9C%AC%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/</guid>
+            <guid isPermalink="true">https://blog.yinghu.asia/2024/06/22/%E4%BD%8E%E6%88%90%E6%9C%AC%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/</guid>
             <title>零成本建站记录</title>
-            <link>https://auroraisok.online/2024/06/22/%E4%BD%8E%E6%88%90%E6%9C%AC%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/</link>
+            <link>https://blog.yinghu.asia/2024/06/22/%E4%BD%8E%E6%88%90%E6%9C%AC%E5%BB%BA%E7%AB%99%E8%AE%B0%E5%BD%95/</link>
             <category>网站</category>
             <pubDate>Sat, 22 Jun 2024 09:16:49 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;这篇文章用于记录一些零成本建站，无需太多的技术力，让任何人都能搭建自己的网站。&lt;/p&gt;
@@ -61,9 +61,9 @@ hexo/wordpress 网站当资源站用，Alist 用于存储资源提供下载，te
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://auroraisok.online/2024/01/10/wordpress%E7%BD%91%E7%AB%99%E4%B8%80%E9%94%AE%E5%A4%87%E4%BB%BD/</guid>
+            <guid isPermalink="true">https://blog.yinghu.asia/2024/01/10/wordpress%E7%BD%91%E7%AB%99%E4%B8%80%E9%94%AE%E5%A4%87%E4%BB%BD/</guid>
             <title>wordpress网站一键备份</title>
-            <link>https://auroraisok.online/2024/01/10/wordpress%E7%BD%91%E7%AB%99%E4%B8%80%E9%94%AE%E5%A4%87%E4%BB%BD/</link>
+            <link>https://blog.yinghu.asia/2024/01/10/wordpress%E7%BD%91%E7%AB%99%E4%B8%80%E9%94%AE%E5%A4%87%E4%BB%BD/</link>
             <category>网站</category>
             <pubDate>Wed, 10 Jan 2024 16:50:25 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;写于 2024.1.10，当时在折腾 wordpress&lt;/p&gt;

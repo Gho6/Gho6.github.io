@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://auroraisok.online</id>
-    <title>理理の图书馆 • Posts by &#34;视觉小说技术，视觉小说测评&#34; tag</title>
-    <link href="https://auroraisok.online" />
+    <id>https://blog.yinghu.asia</id>
+    <title>auroraの失落之境 • Posts by &#34;视觉小说技术，视觉小说测评&#34; tag</title>
+    <link href="https://blog.yinghu.asia" />
     <updated>2023-10-27T14:16:51.000Z</updated>
-    <category term="技术" />
     <category term="日常" />
+    <category term="技术" />
     <category term="杂谈" />
-    <category term="galgame" />
     <category term="gal" />
     <category term="网站" />
+    <category term="galgame" />
     <category term="视觉小说技术，视觉小说测评" />
     <category term="gal工具" />
     <category term="gal测评" />
     <category term="QQ机器人" />
-    <category term="闲聊" />
     <category term="Gal杂谈" />
+    <category term="闲聊" />
     <category term="视觉小说工具" />
     <category term="随想" />
     <category term="技术向" />
     <entry>
-        <id>https://auroraisok.online/2023/10/27/%E3%80%8AGINKA%E3%80%8B%E8%A7%A3%E5%8C%85%E8%AE%B0%E5%BD%95%E5%8F%8A%E4%BD%9C%E5%93%81%E7%AE%80%E8%AF%84/</id>
+        <id>https://blog.yinghu.asia/2023/10/27/%E3%80%8AGINKA%E3%80%8B%E8%A7%A3%E5%8C%85%E8%AE%B0%E5%BD%95%E5%8F%8A%E4%BD%9C%E5%93%81%E7%AE%80%E8%AF%84/</id>
         <title>《GINKA》解包记录及作品简评</title>
-        <link rel="alternate" href="https://auroraisok.online/2023/10/27/%E3%80%8AGINKA%E3%80%8B%E8%A7%A3%E5%8C%85%E8%AE%B0%E5%BD%95%E5%8F%8A%E4%BD%9C%E5%93%81%E7%AE%80%E8%AF%84/"/>
+        <link rel="alternate" href="https://blog.yinghu.asia/2023/10/27/%E3%80%8AGINKA%E3%80%8B%E8%A7%A3%E5%8C%85%E8%AE%B0%E5%BD%95%E5%8F%8A%E4%BD%9C%E5%93%81%E7%AE%80%E8%AF%84/"/>
         <content type="html">&lt;p&gt;#前言&lt;br&gt;
 &lt;font size=5&gt;&lt;font color=red&gt;注：本记录仅用于程序学习和交流，请不要擅自对游戏进行解包、随意使用游戏的立绘、bgm 等文件。否则相关法律责任自负&lt;/font&gt;&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;只是提供一种方法，方法很多大佬勿喷&lt;/p&gt;

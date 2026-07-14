@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://auroraisok.online</id>
-    <title>理理の图书馆 • Posts by &#34;闲聊&#34; tag</title>
-    <link href="https://auroraisok.online" />
+    <id>https://blog.yinghu.asia</id>
+    <title>auroraの失落之境 • Posts by &#34;闲聊&#34; tag</title>
+    <link href="https://blog.yinghu.asia" />
     <updated>2024-06-25T03:49:32.000Z</updated>
-    <category term="技术" />
     <category term="日常" />
+    <category term="技术" />
     <category term="杂谈" />
-    <category term="galgame" />
     <category term="gal" />
     <category term="网站" />
+    <category term="galgame" />
     <category term="视觉小说技术，视觉小说测评" />
     <category term="gal工具" />
     <category term="gal测评" />
     <category term="QQ机器人" />
-    <category term="闲聊" />
     <category term="Gal杂谈" />
+    <category term="闲聊" />
     <category term="视觉小说工具" />
     <category term="随想" />
     <category term="技术向" />
     <entry>
-        <id>https://auroraisok.online/2024/06/25/%E6%B5%85%E8%B0%88%E5%9B%BD%E5%86%85gal%E8%B5%84%E6%BA%90%E7%AB%99%E7%9A%84%E5%9B%B0%E5%A2%83/</id>
+        <id>https://blog.yinghu.asia/2024/06/25/%E6%B5%85%E8%B0%88%E5%9B%BD%E5%86%85gal%E8%B5%84%E6%BA%90%E7%AB%99%E7%9A%84%E5%9B%B0%E5%A2%83/</id>
         <title>浅谈国内gal资源站的困境</title>
-        <link rel="alternate" href="https://auroraisok.online/2024/06/25/%E6%B5%85%E8%B0%88%E5%9B%BD%E5%86%85gal%E8%B5%84%E6%BA%90%E7%AB%99%E7%9A%84%E5%9B%B0%E5%A2%83/"/>
+        <link rel="alternate" href="https://blog.yinghu.asia/2024/06/25/%E6%B5%85%E8%B0%88%E5%9B%BD%E5%86%85gal%E8%B5%84%E6%BA%90%E7%AB%99%E7%9A%84%E5%9B%B0%E5%A2%83/"/>
         <content type="html">&lt;p&gt;前言：本站不是 gal 资源站，也不会提供 galgame 资源下载，也没有关闭网站的打算&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;近些年来，很多无偿分享站关闭 (如恋网、终点), 很多无偿分享者也被请去喝茶。之前神隐之乡关站时，站长发过两篇文章，写得也很不错。我自己之前也是做资源站的，于是聊聊这个问题。我的观点是：不建议开 gal 资源站。决定要开的话，要注意规避风险。&lt;/p&gt;

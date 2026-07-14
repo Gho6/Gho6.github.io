@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://auroraisok.online</id>
-    <title>理理の图书馆 • Posts by &#34;随想&#34; tag</title>
-    <link href="https://auroraisok.online" />
+    <id>https://blog.yinghu.asia</id>
+    <title>auroraの失落之境 • Posts by &#34;随想&#34; tag</title>
+    <link href="https://blog.yinghu.asia" />
     <updated>2024-05-23T10:01:09.000Z</updated>
-    <category term="技术" />
     <category term="日常" />
+    <category term="技术" />
     <category term="杂谈" />
-    <category term="galgame" />
     <category term="gal" />
     <category term="网站" />
+    <category term="galgame" />
     <category term="视觉小说技术，视觉小说测评" />
     <category term="gal工具" />
     <category term="gal测评" />
     <category term="QQ机器人" />
-    <category term="闲聊" />
     <category term="Gal杂谈" />
+    <category term="闲聊" />
     <category term="视觉小说工具" />
     <category term="随想" />
     <category term="技术向" />
     <entry>
-        <id>https://auroraisok.online/2024/05/23/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E5%89%A7%E6%9C%AC%E7%81%B5%E6%84%9F/</id>
+        <id>https://blog.yinghu.asia/2024/05/23/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E5%89%A7%E6%9C%AC%E7%81%B5%E6%84%9F/</id>
         <title>记录一下我的一些剧本灵感</title>
-        <link rel="alternate" href="https://auroraisok.online/2024/05/23/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E5%89%A7%E6%9C%AC%E7%81%B5%E6%84%9F/"/>
+        <link rel="alternate" href="https://blog.yinghu.asia/2024/05/23/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E5%89%A7%E6%9C%AC%E7%81%B5%E6%84%9F/"/>
         <content type="html">&lt;p&gt;我是个喜欢胡思乱想的人，然而我的写作能力有限、不能写出好的故事。这里随便写写一些构想。&lt;/p&gt;
 &lt;p&gt;我喜欢的题材，是 “绝望中的美好”: 故事背景很残酷、很黑暗；在这种背景下出现一丝丝美好、再将它残忍地摧毁。大概就是这种。然而我玩的 gal 作品中、这种题材比较少，希望有人能给我推荐这类题材的。&lt;/p&gt;
 &lt;p&gt;我印象里比较深刻地，一是《夏空彼方》，无论怎么样也不能得到十全十美的结局，玩起来有种无力感；二是《杀恋&lt;sub&gt;悠久流传的恋之歌&lt;/sub&gt;》，兄妹刀子题材挺让我触动的。三是《星之终途》，属于是我喜欢的 “绝望中的美好” 的题材了。&lt;/p&gt;

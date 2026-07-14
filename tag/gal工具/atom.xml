@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://auroraisok.online</id>
-    <title>理理の图书馆 • Posts by &#34;gal工具&#34; tag</title>
-    <link href="https://auroraisok.online" />
+    <id>https://blog.yinghu.asia</id>
+    <title>auroraの失落之境 • Posts by &#34;gal工具&#34; tag</title>
+    <link href="https://blog.yinghu.asia" />
     <updated>2023-07-24T02:07:34.000Z</updated>
-    <category term="技术" />
     <category term="日常" />
+    <category term="技术" />
     <category term="杂谈" />
-    <category term="galgame" />
     <category term="gal" />
     <category term="网站" />
+    <category term="galgame" />
     <category term="视觉小说技术，视觉小说测评" />
     <category term="gal工具" />
     <category term="gal测评" />
     <category term="QQ机器人" />
-    <category term="闲聊" />
     <category term="Gal杂谈" />
+    <category term="闲聊" />
     <category term="视觉小说工具" />
     <category term="随想" />
     <category term="技术向" />
     <entry>
-        <id>https://auroraisok.online/2023/07/24/%E4%B8%AD%E4%BA%8C%E7%A4%BE%E8%A7%A3%E5%8C%85%E7%A5%9E%E5%99%A8fuckpaz/</id>
+        <id>https://blog.yinghu.asia/2023/07/24/%E4%B8%AD%E4%BA%8C%E7%A4%BE%E8%A7%A3%E5%8C%85%E7%A5%9E%E5%99%A8fuckpaz/</id>
         <title>中二社解包神器fuckpaz</title>
-        <link rel="alternate" href="https://auroraisok.online/2023/07/24/%E4%B8%AD%E4%BA%8C%E7%A4%BE%E8%A7%A3%E5%8C%85%E7%A5%9E%E5%99%A8fuckpaz/"/>
+        <link rel="alternate" href="https://blog.yinghu.asia/2023/07/24/%E4%B8%AD%E4%BA%8C%E7%A4%BE%E8%A7%A3%E5%8C%85%E7%A5%9E%E5%99%A8fuckpaz/"/>
         <content type="html">&lt;p&gt;之前在&lt;em&gt;澄空学院&lt;/em&gt;解包研讨找到的工具， Garbro 解不全（pazA,pazB）刚开始我不会用，因为连教程都找不到，自己又太菜。。研究好长时间才弄明白，于是写了一篇博文。在 b 站也有发过。。可以看这个&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3JlYWQvY3YyMTM0NTA1Nw==&#34;&gt;https://www.bilibili.com/read/cv21345057&lt;/span&gt;&lt;/p&gt;
 &lt;hr&gt;

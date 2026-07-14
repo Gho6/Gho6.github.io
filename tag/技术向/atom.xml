@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://auroraisok.online</id>
-    <title>理理の图书馆 • Posts by &#34;技术向&#34; tag</title>
-    <link href="https://auroraisok.online" />
+    <id>https://blog.yinghu.asia</id>
+    <title>auroraの失落之境 • Posts by &#34;技术向&#34; tag</title>
+    <link href="https://blog.yinghu.asia" />
     <updated>2024-01-29T08:29:47.000Z</updated>
-    <category term="技术" />
     <category term="日常" />
+    <category term="技术" />
     <category term="杂谈" />
-    <category term="galgame" />
     <category term="gal" />
     <category term="网站" />
+    <category term="galgame" />
     <category term="视觉小说技术，视觉小说测评" />
     <category term="gal工具" />
     <category term="gal测评" />
     <category term="QQ机器人" />
-    <category term="闲聊" />
     <category term="Gal杂谈" />
+    <category term="闲聊" />
     <category term="视觉小说工具" />
     <category term="随想" />
     <category term="技术向" />
     <entry>
-        <id>https://auroraisok.online/2024/01/29/%E9%9B%B6%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91%E7%AE%80%E5%8D%95%E6%B8%B8%E6%88%8F/</id>
+        <id>https://blog.yinghu.asia/2024/01/29/%E9%9B%B6%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91%E7%AE%80%E5%8D%95%E6%B8%B8%E6%88%8F/</id>
         <title>零代码开发简单游戏</title>
-        <link rel="alternate" href="https://auroraisok.online/2024/01/29/%E9%9B%B6%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91%E7%AE%80%E5%8D%95%E6%B8%B8%E6%88%8F/"/>
+        <link rel="alternate" href="https://blog.yinghu.asia/2024/01/29/%E9%9B%B6%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91%E7%AE%80%E5%8D%95%E6%B8%B8%E6%88%8F/"/>
         <content type="html">&lt;p&gt;小时候喜欢玩游戏，最先是《魔塔》—— 一款很经典的像素游戏（应该好多 90 后用学生机玩过）；后来是网吧爆火的罪恶都市和 CS1.6。&lt;/p&gt;
 &lt;p&gt;小时候觉得，做款游戏真是太强了，游戏开发者可以拿自己的游戏吹一辈子：啊，我玩的某某游戏就是你制作的，大大快给我发点金币和装备吧！如今我所就读的专业和计算机基本无缘了，希望几乎落空了。&lt;/p&gt;
 &lt;p&gt;不过如今互联网很发达，学习资源很多，我这种没有一点基础、8 年没碰电脑的人还能自己做出网站学习知识，信息开源化让更多技术都能被人接触到，于是开发一些简单的游戏也不是特别困难了。&lt;/p&gt;
