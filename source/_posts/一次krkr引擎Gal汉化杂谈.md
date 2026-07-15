@@ -20,7 +20,6 @@ cover: 'https://cloud.touchgaloss.com/uploads/20260627075051717.avif'
 
 再次用上面的方法打开krkrextract.exe，在Pack Setting栏有个“Make Universal Patch”,点一下，回到游戏目录发现多了个exe文件，这就是你的补丁了。游戏目录新建文件夹 ProjectDir，将文本文件用 日语shift jis编码（否则可能乱码），把文本替换成你的汉化文本，保存。将改动后的文本文件复制到 ProjectDir 文件夹目录中。**最后记得要把krkrextract.db .dl .exe 三个文件移出，打开刚刚的exe程序，就会发现游戏文本被替换掉了。基本成功！
 
-
 3.
 
 缺陷：关于UI界面以及游戏标题之类汉化需要进阶教程，而且krkrextract不是所有krkr引擎的游戏都能解包的。所以以上方法可以用来配合机翻软件自己搞机翻自己玩。。

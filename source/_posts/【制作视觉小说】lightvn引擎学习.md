@@ -11,7 +11,9 @@ cover: 'https://cloud.touchgaloss.com/uploads/20260627075036385.avif'
 另外，rkr和桐叶的新作，用的也是这个引擎，我猜是light.vn14.6.1版本
 
 ***
-<h1>为什么选择light.vn引擎？</h1>
+
+# 为什么选择light.vn引擎？
+
 市场上的视觉小说引擎有很多，为什么非要用这个?
 
 问：为什么不用key社、紫社等公司的引擎

@@ -19,7 +19,9 @@ cover: 'https://proxy.kawaii.cv/https://lain.bgm.tv/r/400/pic/cover/l/29/0b/6338
 看官方文档即可。这里我挂载的度盘，点击存储选项，驱动选择度盘，挂载路径为：/你想起的名字 ，web代理打开，策略为：使用代理地址。接着找到下边的“刷新令牌”[点我](https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=iYCeC9g08h5vuP9UqvPHKKSVrKFXGa1v&redirect_uri=https://alist.nn.ci/tool/baidu/callback&scope=basic,netdisk&qrcode=1)，登录度盘账号，只需复制refresh_token:的内容即可，粘贴到“刷新令牌”，至于客户端ID和密钥，我的一开始是配置好的，client_id:和client_secret:的值就是，最后保存。
 
 ***
-<h1>设置权限</h1>
+
+# 设置权限
+
 点击用户，guest是游客，可以设置游客权限。如果想添加用户的话也可以加。
 
 最后是如何访问，打开服务器“安全组”选项，端口范围填端口号，授权对象0.0.0.0/0

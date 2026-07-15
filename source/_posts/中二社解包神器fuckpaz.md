@@ -25,7 +25,7 @@ cover: 'https://cloud.touchgaloss.com/uploads/20260701043022709.avif'
 
 ***
 
-目录后输入fuckpaz.exe,回车键。接下来的页面可能是这样的（如果不是就按这张图上的数字走。） 
+目录后输入fuckpaz.exe,回车键。接下来的页面可能是这样的（如果不是就按这张图上的数字走。）
 
 ![](https://i0.hdslb.com/bfs/article/d9e679d8185ac98de45d4278157d0e7fb10f8ef7.png@!web-article-pic.webp)
 

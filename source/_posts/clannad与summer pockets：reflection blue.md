@@ -9,8 +9,6 @@ cover: 'https://cloud.touchgaloss.com/uploads/20260701043022709.avif'
 
 推荐游玩游戏后再进行阅读，下载链接去steam入正或者去隔壁搜索白嫖
 
-
-
 ## 人物形象方面
 
 在人物上，cl和sprb有很多相似之处。
@@ -32,8 +30,6 @@ cover: 'https://cloud.touchgaloss.com/uploads/20260701043022709.avif'
 ## 主题
 
 都表现了亲情和爱情的主题，key社的很多作品都是如此，既歌颂爱情，又赞美亲情。
-
-
 
 ## 结尾
 
