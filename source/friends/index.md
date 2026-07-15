@@ -6,13 +6,11 @@ copyright: false
 ---
 
 ## 本站信息
-- 站名： aurora的失落之境
+- 站名： 萤之光
 - 站长： aurora
-- 导航页: aurorayh.xyz
-- 地址： https://auroraisok.gitee.io/
+- 导航页: auroralili.cloudns.ch
+- 地址： https://yinghu.asia/
 - 备用地址：https://gho6.github.io/
-- 个人主页：https://auroraisok.gitee.io/auroras-homepage/
-- 微信投喂处：auroraisok_gitee_io
 - Q群：869408627
 - QQ频道：[【Gal#二次元同好】](https://pd.qq.com/s/4mbu0mj9k)
 - bilibili:[小破站](https://space.bilibili.com/39269310?spm_id_from=333.1296.0.0)
