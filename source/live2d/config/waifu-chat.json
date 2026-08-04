@@ -15,7 +15,7 @@
     "pageContextMaxLength": 3000,
     "pageContextSelector": "#article-container",
     "searchXmlPath": "/search.xml",
-    "ttsUrl": "http://185.244.193.69:3000/api/tts",
+    "ttsUrl": "https://api.yinghu.asia/api/tts",
     "welcomeMsg": "欢迎来到洛天的小窝！这里是小洛喵~ 请问有什么需要帮助你的？",
     "welcomeOptions": [
       { 
