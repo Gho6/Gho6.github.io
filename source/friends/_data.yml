@@ -1,0 +1,54 @@
+- site: SuperChen博客
+  owner: chen
+  url: http://blog.hh2022.cn/
+  desc: 念念不忘，必有回响
+  image: https://acgfdao.com/uc_server/avatar.php?uid=1&size=big
+  color: "#e9546b"
+
+- site: F岛ACG
+  url: https://acgfdao.com/
+  desc: 为全球二次元爱好者提供服务
+  image: https://www.miaoaaa.com/wp-content/uploads/2023/08/acgfdao.com_.png
+  color: "#9d5b8b"
+
+- site: 萤ノ光
+  url: https://aurorayuhua.love/
+  desc: 一个二次元gal小站
+  image: https://aurorayuhua.love/img/avatar.png
+  color: "#9370DB"
+
+- site: Narcissu网页版
+  url: https://auroraisok.gitee.io/narcissu
+  desc: 在线游玩
+  image: https://auroraisok.gitee.io/images/avatar.jpg
+  color: "#B23AEE"
+
+- site: 樱落之时
+  url: https://loliacg.xyz/
+  desc: 四月落樱
+  image: https://loliacg.xyz/wp-content/uploads/2023/02/1677417463-69b18320e9fe3ad.png
+  color: "#FFC0CB"
+
+- site: 白猫咖啡馆
+  url: https://www.zeroland.top/
+  desc: 分享点资源
+  image: https://wp-pic.zerorealm.top/1/image/2023/11/dute_favicon_64x64.ico
+  color: "#FFA500"
+
+- site: ACGN咖啡馆
+  url: https://acgn.fan
+  desc: 欢迎来到Galgame的世界
+  image: https://acgn.fan/favicon.ico
+  color: "#FF775C"
+
+- site: auroraの树洞
+  url: https://auroragal.top/
+  desc: 在线聊天室
+  image: https://www.miaoaaa.com/wp-content/uploads/favicon/no.png
+  color: "#8A2BE2"
+
+- site: Galgame月谣
+  url: https://www.sayafx.top/
+  desc: 月谣的Gal站
+  image: https://www.sayafx.top/favicon.ico
+  color: "#EE6363"
