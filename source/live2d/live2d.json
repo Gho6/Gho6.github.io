@@ -11,6 +11,6 @@
   },
   "switchType": "order",
   "chat": {
-    "apiUrl": "http://185.244.193.69:3000/api/chat"
+    "apiUrl": "https://api.yinghu.asia/api/chat"
   }
 }
