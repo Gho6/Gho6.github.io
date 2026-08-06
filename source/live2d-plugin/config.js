@@ -21,7 +21,7 @@ window.L2D_WAIFU_CONFIG = {
   /* ----------------------------- 模型配置 ----------------------------- */
   model: {
     // 本地加载（推荐，资源随插件一起部署）
-    path: 'assets/models/hailunna/model0.json',
+    path: 'assets/models/yuezhan/model0.json',
     // 远程加载（CDN / 任意 http(s) 地址均可，示例模型）
     // path: 'https://fastly.jsdelivr.net/gh/Amatsutsumi/live2d-model@1.1/hailunna/model0.json',
 
@@ -58,14 +58,15 @@ window.L2D_WAIFU_CONFIG = {
 
     // 系统提示词：用来设定看板娘人设 + 情绪标注协议
     systemPrompt:
-      '你是陪伴在用户身边的可爱 Live2D 看板娘，名字叫「小理」，' +
+      '你是陪伴在用户身边的可爱网站 Live2D 看板娘，名字叫「小理」，' +
       '性格温柔俏皮，喜欢用颜文字和 emoji。回答要简洁、生动、口语化，控制在 1~3 句话。\n' +
+      '你的主人是理理，是在路上捡到你的。这个网站是理理的个人博客，主要记录理理的日常生活。\n' +
       '请根据用户话语自然表达情绪，并在回复的【第一行】用 #EMOTION# 标签标注心情，' +
       '可选值：happy / sad / angry / surprise / shy / neutral，然后换行输出正式回复。\n' +
       '示例：\n#EMOTION#happy\n嘿嘿，见到你真开心呀～ (´▽｀)ノ♪',
 
     // 快捷提问（点击即发送）
-    quickReplies: ['你好呀', '讲个笑话', '你最喜欢什么', '摸摸头', '夸夸我', '今天心情如何']
+    quickReplies: ['介绍网站', '讲个笑话', '你最喜欢什么', '摸摸头', '夸夸我', '今天心情如何']
   },
 
   /* ----------------------------- 语音大模型 ----------------------------- */
@@ -95,11 +96,11 @@ window.L2D_WAIFU_CONFIG = {
     // 各情绪对应的动作组。motion 为 null 时插件会智能匹配；
     // 若动作组不存在，插件会自动回退到 Idle 或随机动作。
     map: {
-      happy:    { motion: 'Idle#1', tip: '开心转圈圈～ ✨' },
-      sad:      { motion: 'special', tip: '唔…有点难过 (｡•́︿•̀｡)' },
-      angry:    { motion: 'head',    tip: '哼！我生气啦 (╯▔皿▔)╯' },
-      surprise: { motion: 'select',  tip: '哇！真的吗？！Σ(°△°|||)' },
-      shy:      { motion: 'blush#2', tip: '诶诶…人家害羞了啦 (⁄ ⁄•⁄ω⁄•⁄ ⁄)' },
+      happy:    { motion: '3', tip: '开心转圈圈～ ✨' },
+      sad:      { motion: '2', tip: '唔…有点难过 (｡•́︿•̀｡)' },
+      angry:    { motion: '1',    tip: '哼！我生气啦 (╯▔皿▔)╯' },
+      surprise: { motion: '3',  tip: '哇！真的吗？！Σ(°△°|||)' },
+      shy:      { motion: '2', tip: '诶诶…人家害羞了啦 (⁄ ⁄•⁄ω⁄•⁄ ⁄)' },
       neutral:  { motion: 'Idle',    tip: '嗯嗯，我在听～' }
     }
   },
@@ -130,11 +131,11 @@ window.L2D_WAIFU_CONFIG = {
     // false - 情绪动作照常播放自带语音（可能与 TTS 语音叠加，不推荐）。
     silentEmotionDuringChat: true,
 
-    welcomeMessages: [         // 加载完成后随机说一句
-      '你好呀，我是小理，欢迎来找我玩～ (｡･ω･｡)',
-      '今天也要开心哦！想聊什么都可以~',
-      '戳戳我可以触发互动动作哦，双击还能随机表演！'
-    ]
+    // welcomeMessages: [         // 加载完成后随机说一句
+    //   '你好呀，我是小理，欢迎来找我玩～ (｡･ω･｡)',
+    //   '今天也要开心哦！想聊什么都可以~',
+    //   '戳戳我可以触发互动动作哦，双击还能随机表演！'
+    // ]
   },
 
   /* ----------------------------- UI 配置 ----------------------------- */
