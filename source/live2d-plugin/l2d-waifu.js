@@ -227,7 +227,10 @@
     m.innerHTML =
       '<button data-act="chat" title="聊天框（记录历史的大框）">💬</button>' +
       quickBtn +
+<<<<<<< HEAD
       '<button data-act="switchModel" title="切换模型（绑定 TTS/人设/知识库）">🔀</button>' +
+=======
+>>>>>>> 6fd4b4e616438b263100bd8b3f6356198fb8a911
       '<button data-act="toggleVoice" title="开启/关闭语音">🔊</button>' +
       '<button data-act="expression" title="随机表情">😊</button>' +
       '<button data-act="motion" title="随机动作">🎬</button>' +

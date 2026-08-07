@@ -16,14 +16,18 @@ window.L2D_WAIFU_CONFIG = {
   // true  - 手机端正常显示（默认）
   // false - 手机端（移动端 UA 或触屏小屏）不加载看板娘，仅 PC 端显示。
   //         适用于不想在手机上展示的网站。
+<<<<<<< HEAD
   enableOnMobile: true,
+=======
+  enableOnMobile: false,
+>>>>>>> 6fd4b4e616438b263100bd8b3f6356198fb8a911
 
   /* ----------------------------- 模型配置 ----------------------------- */
   model: {
     // 本地加载（推荐，资源随插件一起部署）
     path: 'assets/models/hailunna/model0.json',
     // 远程加载（CDN / 任意 http(s) 地址均可，示例模型）
-    // path: 'https://fastly.jsdelivr.net/gh/Amatsutsumi/live2d-model@1.1/hailunna/model0.json',
+    //path: 'https://fastly.jsdelivr.net/gh/Amatsutsumi/live2d-model@1.1/hailunna/model0.json',
 
     scale: 1.0,          // 模型缩放比例，1 为原始大小，常用 0.5 ~ 2.5。
                           // 菜单/统一气泡/简要发送框/聊天框/状态标签与模型的间距会自动跟随该值联动缩放，
@@ -130,11 +134,11 @@ window.L2D_WAIFU_CONFIG = {
     // false - 情绪动作照常播放自带语音（可能与 TTS 语音叠加，不推荐）。
     silentEmotionDuringChat: true,
 
-    welcomeMessages: [         // 加载完成后随机说一句
-      '你好呀，我是小理，欢迎来找我玩～ (｡･ω･｡)',
-      '今天也要开心哦！想聊什么都可以~',
-      '戳戳我可以触发互动动作哦，双击还能随机表演！'
-    ]
+    // welcomeMessages: [         // 加载完成后随机说一句
+    //   '你好呀，我是小理，欢迎来找我玩～ (｡･ω･｡)',
+    //   '今天也要开心哦！想聊什么都可以~',
+    //   '戳戳我可以触发互动动作哦，双击还能随机表演！'
+    // ]
   },
 
   /* ----------------------------- UI 配置 ----------------------------- */
