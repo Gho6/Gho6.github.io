@@ -11,13 +11,16 @@
 | 功能 | 说明 |
 | --- | --- |
 | 💬 大模型对话 | 接入文字大模型（智谱/OpenAI 兼容格式），打字机逐字输出 |
+| 📝 简要发送 | 菜单新增“简要发送”沉浸式小框，只弹一个输入框快速给 AI 发消息，更有真人对话感 |
 | 🔊 TTS 语音 | 文字生成后自动调用语音大模型，**语音生成完毕后文字 + 语音同时输出** |
-| 😊 情绪/表情系统 | 大模型返回心情标签，驱动对应动作组 + 头顶气泡 + 提示文案 |
-| 🤔 思考中动作 | 请求大模型 / 生成语音期间，播放"思考"动作 |
+| 😊 情绪/表情系统 | 大模型返回心情标签，驱动对应动作组 + 统一气泡提示文案 |
+| 🤔 思考中动作 | 请求大模型 / 生成语音期间，播放“思考”动作，提示语显示在统一气泡 |
 | 👄 口型实时同步 | Web Audio 分析语音音量驱动嘴部参数，无需模型特殊配置（兼容 Cubism 2/6） |
+| 🫧 统一气泡 | **头顶白色气泡与模型回复气泡已合并**：思考中（“让我想想…”）、模型回复、状态提示都显示在同一个气泡里，不再叠框 |
 | 🖱 可互动系统 | 点击头部/身体触发互动动作（含模型自带语音），模仿 Live2D Viewer EX |
 | 🧲 拖拽 | 看板娘可随意拖拽到屏幕任意位置 |
 | 🎛 配置化 | 单文件 `config.js` 自定义模型、接口、尺寸、位置、情绪动作映射等 |
+| 🔀 一键切换模型 | 侧边菜单新增 🔀 按钮，切换 Live2D 模型的同时自动级联切换 TTS/文字模型/音色/人设/知识库（配合 `live2d-ai-backend` 使用） |
 | 📦 本地/远程模型 | 模型文件可随插件本地部署，也可直接引用 CDN 链接 |
 | 🛡 语音防冲突 | 模型自带语音播放期间自动锁定聊天框，待机后恢复，避免与 TTS 混淆 |
 | 🌐 任意网站 | 只需 3 行标签引入，即可在任意 HTML 页面 / Hexo 博客 / Vue / React 页面使用 |
@@ -58,6 +61,18 @@ live2d-plugin/
 
 无需任何其他代码，页面右下角就会出现看板娘 🎀（聊天框默认隐藏，点击模型左侧 💬 召唤）
 
+### 3. 打开演示页
+
+浏览器打开 `live2d-plugin/demo/index.html`，即可体验全部功能：
+- 聊天框**默认隐藏**，点击模型左侧 💬 召唤完整聊天框（悬浮在模型头顶，不遮挡模型）
+- 点击 📝 **“简要发送”**，弹出沉浸式小输入框快速给 AI 发消息（更有真人对话感）
+- 头顶白色气泡已移除，**合并为统一气泡**：思考中（“让我想想…”）、模型回复、状态提示都在同一个气泡里
+- 输入文字 → 语音生成完毕后，文字（打字机）+ 情绪动作 + TTS 语音 + 口型同步一起输出
+- 点击看板娘身体/头部 → 互动动作 + 模型自带语音（聊天框自动暂停）
+- 拖拽看板娘可任意移动
+- 左侧小菜单：💬 聊天 / 📝 简要发送 / 🔊 语音开关 / 😊 随机表情 / 🎬 随机动作 / 🏠 回待机 / 🙈 隐藏
+- 隐藏看板娘后，**右下角保留 🙈 召唤按钮**，点击即可召回
+
 ---
 
 ## 🎨 配置说明
@@ -69,7 +84,7 @@ live2d-plugin/
 ```js
 model: {
   path: 'assets/models/hailunna/model0.json',  // 本地模型
-  // path: 'https://fastly.jsdelivr.net/gh/Amatsutsumi/live2d-model@1.1/hailunna/model0.json', // 支持远程 CDN 模型
+  // path: 'https://fastly.jsdelivr.net/gh/Amatsutsumi/live2d-model@1.1/hailunna/model0.json', // 远程 CDN 模型
   scale: 1.0,          // 缩放比例（0.5 ~ 2.5）
   position: [0, -0.15], // 位置偏移 [x, y]
   volume: 0.9,          // 模型自带语音音量 0~1
@@ -90,6 +105,18 @@ canvas: {
 },
 draggable: true             // 是否可拖拽
 ```
+
+### 全局开关
+
+```js
+// 是否在手机端开启看板娘：
+//   true  - 手机端正常显示（默认）
+//   false - 手机端（移动端 UA 或触屏小屏）不加载看板娘，仅 PC 端显示。
+//           适用于不想在手机上展示的网站。
+enableOnMobile: true,
+```
+
+> 💡 **动态缩放联动**：`model.scale` 改变后，左侧菜单、统一气泡、状态标签、简要发送框、聊天框与模型的距离会自动跟随缩放——模型放大则距离拉远、模型缩小则距离收近，不会“卡进模型里”或“离模型太远”。也可在控制台调用 `L2DWaifu.setScale(0.8)` 动态调整（会同步更新所有 UI 间距）。
 
 ### 文字大模型（Chat）
 
@@ -119,8 +146,6 @@ tts: {
 ```
 
 ### 情绪/心情系统
-
-每个模型的motion是不一样的，具体可以打开模型的model0.json文件，查看motion名字。只需要修改config.js文件里对应的motion名字就好啦。
 
 ```js
 emotion: {
@@ -166,6 +191,26 @@ mouth: {
   openScale: 1.0   // 张口幅度倍率
 }
 ```
+
+### UI 配置
+
+```js
+ui: {
+  title: '小理',           // 看板娘名字
+  avatar: '🐰',            // 聊天头像
+  chatWidth: 300,          // 完整聊天框宽度（px）
+  chatOpen: false,         // 打开页面时是否展开完整聊天框（默认隐藏）
+  showMenu: true,          // 是否显示左侧小菜单
+  showQuickSend: true,     // 是否启用「📝 简要发送」沉浸式小框（false 时左侧菜单不显示该按钮）
+  statusText: { ... }      // 状态文案
+}
+```
+
+> 💬 **两种对话方式**：
+> - **完整聊天框（💬）**：记录聊天历史的大框，悬浮在模型头顶，适合需要看上下文对话记录的场景。
+> - **简要发送（📝）**：只弹一个小输入框快速给 AI 发消息，更有真人对话的沉浸感，发送后自动收起；与完整聊天框互斥，不会叠框。
+>
+> 🫧 **统一气泡**：已移除头顶白色气泡，将「思考中（“让我想想…”）」「模型回复文字」「状态提示」合并为模型头顶的同一个灰色气泡，界面更干净不叠框。
 
 ---
 
@@ -223,6 +268,67 @@ skip_render:
 
 ---
 
+## 🔌 与 live2d-ai-backend 完美对接（推荐）
+
+> 🎯 本插件与 [live2d-ai-backend](https://cnb.cool/live2d-AI/live2d-AImodel-RD/-/tree/main/live2d-ai-backend) **可以完美对接**：后端动态生成 `window.L2D_WAIFU_CONFIG`，插件无需改任何代码即可直接使用，还能获得**网页管理后台**（配置文字/语音大模型、人设、知识库）+ **🔀 一键切换模型**能力。
+
+### 对接原理
+
+- 后端启动后提供一个 `/watcher/config.js` 动态配置接口，内容就是本插件读取的 `window.L2D_WAIFU_CONFIG`，其中：
+  - `chat.api` / `tts.api` 自动指向后端代理（`/api/chat`、`/api/tts`），**API Key 绝不暴露给前端**；
+  - 额外注入 `chatProviders` / `ttsProviders`（可切换提供方列表）、`bindings` / `modelList`（模型绑定列表）、`__backend` 标记。
+- 插件的 🔀 **切换模型**按钮会读取 `bindings` / `modelList`，切换模型时自动：
+  1. 重新加载新的 Live2D 模型；
+  2. 把后续 Chat / TTS 请求带上 `bindingId`，由后端**级联切换**该模型绑定的文字大模型、TTS 服务、音色、人设与知识库；
+  3. 同步更新看板娘名字/头像（绑定的人设）。
+
+### 步骤一：部署并配置后端
+
+按 [live2d-ai-backend README](https://cnb.cool/live2d-AI/live2d-AImodel-RD/-/tree/main/live2d-ai-backend) 部署（本地 `npm start` 或 Docker），然后在**管理后台**（默认 `http://localhost:3000/admin.html`，账号 `admin / 123456`）：
+
+1. 配置**文字大模型**（支持 DeepSeek / OpenAI / 智谱 GLM / 通义千问 / SiliconFlow / Kimi / Ollama 等）；
+2. 配置**语音大模型**（OpenAI 兼容 / 枫雨API 这类 GET 接口均可）；
+3. 设置 **AI 人设** 与 **知识库**（可选）；
+4. 在 **🎭 模型绑定** 里为每个 Live2D 模型添加绑定，绑定各自的文字模型、TTS 音色、人设与知识库；
+   - 绑定里勾选「为此模型自定义情绪映射」可为该模型**单独配置 6 种情绪的「动作组 + 气泡文案」**（`emotionMap`），不同模型的动作组命名可以不同（如 `happy` 可映射到该模型的真实动作组「高兴」）；不勾选则使用全局情绪表。
+5. 点「💾 保存配置」，后端即自动生成 `/watcher/config.js`。
+
+### 步骤二：在你的页面引入（无需本插件的 config.js）
+
+后端已经内置 **CORS 中间件**，任何网站都可以直接跨域引用：
+
+```html
+<!-- 1. l2d 官方库 -->
+<script src="https://unpkg.com/l2d/dist/index.min.js"></script>
+
+<!-- 2. 动态配置（由 live2d-ai-backend 生成，代替本插件的 config.js） -->
+<script src="http://你的后端域名/watcher/config.js"></script>
+
+<!-- 3. 插件主文件（本仓库 live2d-plugin/l2d-waifu.js，或后端 /watcher/l2d-waifu.js 同一份） -->
+<script src="/live2d-plugin/l2d-waifu.js"></script>
+<link rel="stylesheet" href="/live2d-plugin/l2d-waifu.css" />
+```
+
+> ✅ 说明：后端 `/watcher/l2d-waifu.js` 与 `l2d-waifu.css` 就是本插件同源版本（含 🔀 切换模型逻辑）。你可以二选一：
+> - **用本仓库的** `live2d-plugin/l2d-waifu.js` + 后端 `/watcher/config.js`（推荐，方便随本仓库更新）；
+> - 或全部用后端的 `/watcher/` 静态文件。
+
+### 步骤三：使用 🔀 切换模型
+
+刷新页面后，看板娘左侧小菜单会多出一个 **🔀** 按钮：
+
+- 点击弹出「🎭 切换模型」面板，列出你在后台配置的全部模型绑定；
+- 选择一个模型即**热切换**：重新加载 Live2D 模型 + 级联切换 TTS/文字模型/音色/人设/知识库 + **该模型绑定的情绪映射表 `emotionMap`**，并清空对话历史；
+- 切到某个绑定后，情绪动作**优先使用该模型的 `emotionMap`**（动作组 + 气泡文案），未配置的情绪自动回退全局 `watcher.emotion.map`；
+- 对话与语音请求会自动携带 `bindingId`，由后端完成级联路由。
+
+### 不使用后端时的兼容行为
+
+- 若配置中没有 `bindings` / `modelList`（纯前端 `config.js` 使用），🔀 按钮点击会提示「后台未配置可切换的模型绑定」，不影响其它功能；
+- Chat / TTS 仍走 `config.js` 里配置的 `chat.api` / `tts.api`，行为与旧版完全一致。
+
+---
+
 ## 🛠 换用你自己的模型
 
 插件支持两种加载方式，改 `config.js` 里 `model.path` 即可：
@@ -249,7 +355,8 @@ window.L2DWaifu.instance();            // 获取 l2d 实例（可用全部 l2d �
 window.L2DWaifu.getState();            // 获取运行状态
 window.L2DWaifu.playMotion('Idle');    // 播放动作
 window.L2DWaifu.setExpression('f01');  // 切换表情
-window.L2DWaifu.openChat() / closeChat() / toggleChat();  // 开关聊天框
+window.L2DWaifu.openChat() / closeChat() / toggleChat();  // 开关完整聊天框（大框）
+window.L2DWaifu.openQuickBar() / hideQuickBar() / toggleQuickBar();  // 开关“简要发送”小框
 window.L2DWaifu.hide() / show();       // 隐藏/显示看板娘
 ```
 
@@ -270,7 +377,7 @@ window.L2DWaifu.hide() / show();       // 隐藏/显示看板娘
 ```
 
 - **语音与文字同步输出**：先完成 Chat 与 TTS 两段请求，**语音生成完毕后**才同时开始文字打字机输出与语音播放，避免“文字先出、语音后到”
-- **情绪动作**：大模型在回复首行返回 `#EMOTION#happy` 等标签 → 插件映射到模型动作组 + 头顶气泡
+- **情绪动作**：大模型在回复首行返回 `#EMOTION#happy` 等标签 → 插件映射到模型动作组 + 统一气泡
 - **思考中**：请求 Chat / TTS 期间播放 `thinking.motion` 配置的动作
 - **口型同步**：`<audio>` 通过 `createMediaElementSource` 接入 Web Audio `AnalyserNode`，每帧读取音量驱动嘴部参数（`ParamMouthOpenY` / `PARAM_MOUTH_OPEN_Y` 等自动检测）
 - **语音防冲突**：模型动作自带语音时（如点击身体），`motionstart` → 锁定聊天框；`motionend` 回到待机 → 解锁。同时 TTS 播放期间会暂时把模型音量设为 0，结束后恢复
@@ -294,6 +401,9 @@ A：已修复。对话回复期间的情绪动作会优先选择"无自带语音
 **Q：聊天框输入时提示"模型还没准备好"？**
 A：模型资源较多，需等加载完成（右下角状态显示"待机中"）后再发送。
 
+**Q：左侧菜单的 🔀 切换模型按钮点了没反应？**
+A：🔀 按钮需要配合 `live2d-ai-backend` 使用。若页面配置（`config.js` 或后端 `/watcher/config.js`）中没有 `bindings` / `modelList`（即未在后端「🎭 模型绑定」里配置任何绑定），点击会提示「后台未配置可切换的模型绑定」。请先在后端管理后台添加模型绑定，或用带 `bindings` 的配置。
+
 **Q：TTS 没有声音？**
 A：① 浏览器自动播放策略要求用户先与页面交互（点击一次即可，插件会自动解锁）；② 确认 `tts.enabled: true`；③ 确认接口可用（F12 控制台看是否有报错）。
 
@@ -310,7 +420,24 @@ A：点击需命中模型的 HitArea（不同模型命名不同）。`interact.h
 A：隐藏后看板娘本体（画布 + 左侧菜单）会消失，但**右下角会保留一个 🙈 圆形召唤按钮**，点击即可重新显示看板娘。
 
 **Q：聊天框在哪里？**
-A：聊天框**默认隐藏**。点击模型左侧菜单的 💬 即可召唤，聊天框会悬浮在模型头顶（不遮挡模型）；若顶部空间不足会自动翻转到模型下方。
+A：有两种对话方式，都在模型左侧小菜单里：
+- **💬 完整聊天框**：记录聊天历史的大框，点击 💬 召唤，悬浮在模型头顶（不遮挡模型）；若顶部空间不足会自动翻转到模型下方。
+- **📝 简要发送**：沉浸式小框，只弹一个输入框快速给 AI 发消息，发送后自动收起，更有真人对话感；与完整聊天框互斥不会叠框。
+
+**Q：头顶的白色气泡和模型回复的灰色框怎么合并了？**
+A：本次已把“头顶白色气泡”移除，将「思考中（“让我想想…”）」「模型回复文字」「状态提示」全部合并到模型头顶的同一个灰色气泡里，不再叠框、界面更干净。
+
+**Q：不想要“简要发送”按钮？**
+A：把 `config.js` 的 `ui.showQuickSend` 设为 `false` 即可，左侧菜单将不再显示 📝 按钮。
+
+**Q：展开大聊天框时，统一气泡被挡住了？**
+A：已处理。完整聊天框 / 简要发送框展开期间，统一气泡会自动隐藏，不再被遮挡；收起后自动恢复显示。
+
+**Q：缩放模型后，菜单/统一气泡/聊天框与模型的距离不合适？**
+A：已支持动态联动。`config.js` 中修改 `model.scale` 后，左侧菜单、统一气泡、状态标签、简要发送框、聊天框与模型的距离会**按比例自动调整**（模型大则距离远、模型小则距离近）。也可调用 `L2DWaifu.setScale(数值)` 动态缩放，UI 间距会同步更新。
+
+**Q：网站不想在手机端显示看板娘？**
+A：把 `config.js` 中的 `enableOnMobile` 设为 `false` 即可。手机端（移动端 UA 或触屏小屏）不会加载看板娘，PC 端不受影响。
 
 **Q：模型自带语音和 TTS 冲突？**
 A：插件已处理：模型动作自带语音期间，聊天框自动锁定并暂停 TTS；TTS 播放期间模型音量自动静音。若你的模型交互动作不带语音，可把 `interact.lockChatDuringModelVoice` 设为 `false` 关闭锁定。
@@ -336,4 +463,4 @@ live2d-plugin/
 
 - [l2d](https://github.com/hacxy/l2d) — Live2D 渲染引擎
 - [Amatsutsumi/live2d-model](https://github.com/Amatsutsumi/live2d-model) — 示例模型（海伦娜）
-- 智谱清言（GLM-4.7-Flash）文字大模型 + 语音合成接口
+- 智谱清言（GLM-4-Flash）文字大模型 + 语音合成接口

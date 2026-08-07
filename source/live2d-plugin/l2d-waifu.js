@@ -1,5 +1,5 @@
 /* ============================================================================
- *  Live2D 看板娘插件  v1.1.0
+ *  Live2D 看板娘插件  v1.3.0
  *  ---------------------------------------------------------------------------
  *  基于 l2d（https://github.com/hacxy/l2d）的看板娘插件，
  *  支持：大模型对话、TTS 语音、情绪/表情/动作、口型同步、拖拽与互动、
@@ -66,6 +66,7 @@
     _canvasWasHidden: false,  // 记录画布是否经历隐藏（用于显示后重算投影）
     vol: 0,              // 当前音量（0=静音）
     history: [],         // 对话历史
+    bindingId: null,     // 当前模型绑定 id（用于后端级联切换 TTS/文字模型/人设/知识库）
     lastMotionGroup: null,
     motionEndTimer: null,
     soundGroups: {}      // 播放时会带自带语音的动作组集合
@@ -97,8 +98,34 @@
     (console.debug || console.log).apply(console, args);
   }
 
+  /* 是否手机端（用于 enableOnMobile 配置） */
+  function isMobileDevice() {
+    try {
+      var ua = navigator.userAgent || '';
+      var mobileUA = /Android|iPhone|iPad|iPod|Windows Phone|Mobile/i.test(ua);
+      var touch = ('ontouchstart' in window) || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
+      var smallScreen = window.innerWidth <= 768;
+      // 移动端 UA，或「触屏 + 小屏」都视为手机端
+      return mobileUA || (touch && smallScreen);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  /* 把模型缩放同步到 CSS 变量，菜单/气泡/聊天框与模型的间距会随之动态变化 */
+  function applyScaleVar() {
+    if (!rootEl) return;
+    var scale = (CFG.model && CFG.model.scale) || 1;
+    rootEl.style.setProperty('--l2d-scale', scale);
+  }
+
   /* ---------------- 初始化 ---------------- */
   function init() {
+    // 手机端开关：enableOnMobile === false 时，手机端不初始化看板娘
+    if (CFG.enableOnMobile === false && isMobileDevice()) {
+      log('已按配置在手机端关闭看板娘（enableOnMobile: false）');
+      return;
+    }
     buildDom();
     bindMenu();
     bindDrag();
@@ -125,6 +152,8 @@
   function buildDom() {
     rootEl = document.createElement('div');
     rootEl.id = ROOT_ID;
+    // 把模型缩放绑定到 CSS 变量（--l2d-scale），供 UI 间距动态联动
+    applyScaleVar();
 
     var canvasCfg = CFG.canvas || {};
     var uiCfg = CFG.ui || {};
@@ -137,17 +166,14 @@
     canvasEl.height = canvasCfg.height || 420;
     box.appendChild(canvasEl);
 
-    // 头顶气泡
-    var tip = el('div', 'l2d-waifu__tip');
-    box.appendChild(tip);
-    ui.tip = tip;
-
     // 状态标签
     var status = el('div', 'l2d-waifu__status', '···');
     box.appendChild(status);
     ui.status = status;
 
-    // 聊天气泡（文字）
+    // 统一气泡（合并后的"模型回复气泡"）：
+    // 思考中提示（"让我想想…"）、模型回复文字、各类状态提示都显示在这里。
+    // 不再使用头顶白色气泡，减少叠框、体验更沉浸。
     var bubble = el('div', 'l2d-waifu__bubble');
     box.appendChild(bubble);
     ui.bubble = bubble;
@@ -156,6 +182,10 @@
     ui.panel = buildChatPanel(uiCfg);
     // 挂在画布容器内，绝对定位在模型头顶，绝不遮挡模型
     box.appendChild(ui.panel);
+
+    // 简要发送小框（沉浸式快速对话，默认隐藏）
+    ui.quickbar = buildQuickBar();
+    box.appendChild(ui.quickbar);
 
     // 主容器（左侧小菜单 + 看板娘）
     var wrap = el('div', 'l2d-waifu__wrap');
@@ -191,8 +221,13 @@
   /* 模型左侧的小菜单 */
   function buildSideMenu() {
     var m = el('div', 'l2d-waifu__side-menu');
+    var quickBtn = '<button data-act="quickSend" title="简要发送（沉浸式小框）">📝</button>';
+    // 允许通过配置关闭「简要发送」按钮
+    if ((CFG.ui && CFG.ui.showQuickSend) === false) quickBtn = '';
     m.innerHTML =
-      '<button data-act="chat" title="召唤聊天框">💬</button>' +
+      '<button data-act="chat" title="聊天框（记录历史的大框）">💬</button>' +
+      quickBtn +
+      '<button data-act="switchModel" title="切换模型（绑定 TTS/人设/知识库）">🔀</button>' +
       '<button data-act="toggleVoice" title="开启/关闭语音">🔊</button>' +
       '<button data-act="expression" title="随机表情">😊</button>' +
       '<button data-act="motion" title="随机动作">🎬</button>' +
@@ -267,6 +302,60 @@
     });
 
     return panel;
+  }
+
+  /* 简要发送小框：沉浸式快速对话（只保留一个输入框 + 发送按钮）。
+     通过左侧菜单的「📝 简要发送」召唤，用完自动隐藏。 */
+  function buildQuickBar() {
+    var bar = el('div', 'l2d-waifu__quickbar');
+    bar.innerHTML =
+      '<input class="l2d-waifu__quickbar-input" type="text" maxlength="300" ' +
+      'placeholder="说点什么…" autocomplete="off" />' +
+      '<button class="l2d-waifu__quickbar-send" title="发送">➤</button>';
+    ui.quickbarInput = $('.l2d-waifu__quickbar-input', bar);
+    ui.quickbarSend = $('.l2d-waifu__quickbar-send', bar);
+
+    // 阻止按下/点击事件穿透到画布（避免误触发模型互动/拖拽）
+    ['pointerdown', 'mousedown', 'touchstart'].forEach(function (evt) {
+      bar.addEventListener(evt, function (e) { e.stopPropagation(); });
+    });
+    bar.addEventListener('click', function (e) { e.stopPropagation(); });
+
+    ui.quickbarSend.addEventListener('click', function () { sendQuick(); });
+    ui.quickbarInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') sendQuick();
+      if (e.key === 'Escape') hideQuickBar();
+    });
+
+    return bar;
+  }
+
+  function sendQuick() {
+    if (!state.ready) return showTip('模型还没准备好，稍等一下~', 1500);
+    if (state.busy || state.speaking) return showTip('正在回复中，请稍候~', 1500);
+    if (state.chatLocked) return showTip('模型正在说话，稍等片刻~', 1500);
+
+    var text = (ui.quickbarInput.value || '').trim();
+    if (!text) return;
+    ui.quickbarInput.value = '';
+    hideQuickBar();
+    send(text);
+  }
+
+  function openQuickBar() {
+    // 与完整聊天框互斥，避免叠框
+    if (ui.panel.classList.contains('open')) closeChat();
+    ui.quickbar.classList.add('open');
+    if (ui.box) ui.box.classList.add('quickbar-open');
+    hideTip();
+    ui.quickbarInput.focus();
+  }
+  function hideQuickBar() {
+    ui.quickbar.classList.remove('open');
+    if (ui.box) ui.box.classList.remove('quickbar-open');
+  }
+  function toggleQuickBar() {
+    if (ui.quickbar.classList.contains('open')) hideQuickBar(); else openQuickBar();
   }
 
   /* ---------------- 布局 ---------------- */
@@ -425,22 +514,28 @@
     document.addEventListener('keydown', unlock);
   }
 
-  /* ---------------- 状态与气泡 ---------------- */
+  /* ---------------- 状态与统一气泡 ---------------- */
   function setStatus(text, kind) {
     if (!ui.status) return;
     ui.status.textContent = text || '';
     ui.status.className = 'l2d-waifu__status' + (kind ? ' l2d-waifu__status--' + kind : '');
   }
 
+  /* 统一气泡（合并后的"模型回复气泡"）：
+     思考中提示（"让我想想…"）、模型回复文字、各类状态提示都显示在这里。
+     不再使用头顶白色气泡，减少叠框、更沉浸。 */
   function showTip(text, ms) {
-    var tip = ui.tip;
+    var tip = ui.bubble;
+    if (!tip) return;
+    // 大聊天框/简要发送框展开时，统一气泡让位不显示，避免叠框
+    if (ui.panel.classList.contains('open') || ui.quickbar.classList.contains('open')) return;
     tip.textContent = text || '';
     tip.classList.add('show');
     clearTimeout(showTip._t);
     if (ms) showTip._t = setTimeout(function () { hideTip(); }, ms);
   }
   function hideTip() {
-    ui.tip.classList.remove('show');
+    if (ui.bubble) ui.bubble.classList.remove('show');
   }
 
   /* ---------------- 聊天 UI ---------------- */
@@ -477,9 +572,14 @@
   }
 
   function openChat() {
+    // 与简要发送小框互斥，避免叠框
+    if (ui.quickbar.classList.contains('open')) hideQuickBar();
     // 聊天面板悬浮在模型上方，避免超出视口顶部
     var panel = ui.panel;
     panel.classList.add('open');
+    // 标记聊天框已展开：隐藏统一气泡，避免叠框
+    if (ui.box) ui.box.classList.add('chat-open');
+    hideTip();
     ui.toggle.textContent = '▾';
     // 若面板会超出视口顶部，则自动改为悬浮在模型下方（bottom:auto + top）
     var maxH = Math.max(120, Math.min(400, window.innerHeight - 200));
@@ -500,6 +600,7 @@
   }
   function closeChat() {
     ui.panel.classList.remove('open');
+    if (ui.box) ui.box.classList.remove('chat-open');
     ui.toggle.textContent = '▴';
   }
   function toggleChat() {
@@ -543,8 +644,12 @@
   function handleMenuAction(act) {
     switch (act) {
       case 'chat':
-        // 点击「聊天」→ 召唤聊天框
+        // 点击「聊天」→ 召唤完整聊天框（记录历史的大框）
         if (ui.panel.classList.contains('open')) closeChat(); else openChat();
+        break;
+      case 'quickSend':
+        // 点击「简要发送」→ 召唤沉浸式小框（只发消息，不占大框）
+        toggleQuickBar();
         break;
       case 'toggleVoice':
         if (state.vol > 0) { state.vol = 0; l2d.setVolume(0); showTip('🔇 语音已关闭', 1500); }
@@ -553,6 +658,10 @@
           l2d.setVolume(state.vol);
           showTip('🔊 语音已开启', 1500);
         }
+        break;
+      case 'switchModel':
+        // 弹出模型切换面板（绑定提供方/音色/人设/知识库）
+        showModelSwitcher();
         break;
       case 'expression':
         if (!state.ready) return;
@@ -576,7 +685,7 @@
     if (state.busy) return showTip('正在说话中，稍等片刻~', 1200);
     stopTts();
     restoreModelVoice();
-    ui.bubble.style.display = 'none';
+    hideTip();
     ui.msgs.innerHTML = '';
     playIdle();
     showTip('已回到待机～ 🏠', 1200);
@@ -596,8 +705,10 @@
     // visibility:hidden 不影响布局尺寸，可彻底避免该问题，且同样不可点击。
     ui.wrap.style.visibility = 'hidden';
     state._canvasWasHidden = true;
-    // 聊天面板随之隐藏
+    // 聊天面板与简要发送框随之隐藏
     closeChat();
+    hideQuickBar();
+    hideTip();
     // 常驻召唤按钮保留在右下角，随时可召回
     ui.summon.classList.add('show');
     showTip('看板娘已隐藏，点击右下角 🙈 召唤回来', 2000);
@@ -704,7 +815,12 @@
 
   function applyEmotion(tag, tip, silent) {
     if (!CFG.emotion || CFG.emotion.enable === false) tag = 'neutral';
+    // 优先使用当前绑定模型自己的情绪映射表；未配置则回退全局 watcher.emotion.map
+    var curMap = null;
+    var b = currentBinding();
+    if (b && b.emotionMap) curMap = b.emotionMap;
     var map = (CFG.emotion && CFG.emotion.map) || {};
+    if (curMap) map = curMap;
     var conf = map[tag] || map.neutral || {};
     var motionGroup = conf.motion;
     var t = conf.tip || tip;
@@ -923,6 +1039,130 @@
     }
   }
 
+  /* ---------------- 模型切换（绑定） ---------------- */
+  // 模型切换面板 DOM
+  var modelSwitcherEl = null;
+  var modelSwitcherMask = null;
+
+  function currentBinding() {
+    var list = CFG.bindings || [];
+    if (!state.bindingId) return null;
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].id === state.bindingId) return list[i];
+    }
+    return null;
+  }
+
+  /* 构建当前生效的 chat/tts 配置（考虑绑定级联） */
+  function effectiveChatCfg() {
+    var b = currentBinding();
+    if (b && b.chat) return b.chat;
+    return CFG.chat || {};
+  }
+  function effectiveTtsCfg() {
+    var b = currentBinding();
+    if (b && b.tts) return b.tts;
+    return CFG.tts || {};
+  }
+  function effectiveSystemPrompt() {
+    var b = currentBinding();
+    if (b && b.systemPrompt) return b.systemPrompt;
+    return (CFG.chat && CFG.chat.systemPrompt) || '';
+  }
+
+  function showModelSwitcher() {
+    if (modelSwitcherEl) hideModelSwitcher();
+    var list = CFG.modelList || CFG.bindings || [];
+    if (!list.length) {
+      return showTip('后台未配置可切换的模型绑定', 2000);
+    }
+
+    modelSwitcherMask = el('div', 'l2d-waifu__model-mask');
+    var panel = el('div', 'l2d-waifu__model-switcher');
+    panel.innerHTML =
+      '<div class="l2d-waifu__model-title">🎭 切换模型</div>' +
+      '<div class="l2d-waifu__model-list">' +
+      list.map(function (b) {
+        var on = b.id === state.bindingId;
+        return '<button class="l2d-waifu__model-item' + (on ? ' active' : '') + '" data-id="' + esc(b.id) + '">' +
+          esc(b.name || b.modelPath) + (on ? ' ✓' : '') +
+          '</button>';
+      }).join('') +
+      '</div>' +
+      '<button class="l2d-waifu__model-close">✕ 关闭</button>';
+    modelSwitcherMask.appendChild(panel);
+    document.body.appendChild(modelSwitcherMask);
+
+    var items = panel.querySelectorAll('.l2d-waifu__model-item');
+    Array.prototype.forEach.call(items, function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.getAttribute('data-id');
+        switchModel(id);
+        hideModelSwitcher();
+      });
+    });
+    panel.querySelector('.l2d-waifu__model-close').addEventListener('click', hideModelSwitcher);
+    modelSwitcherMask.addEventListener('click', function (e) {
+      if (e.target === modelSwitcherMask) hideModelSwitcher();
+    });
+  }
+
+  function hideModelSwitcher() {
+    if (modelSwitcherMask && modelSwitcherMask.parentNode) {
+      modelSwitcherMask.parentNode.removeChild(modelSwitcherMask);
+    }
+    modelSwitcherMask = null;
+    modelSwitcherEl = null;
+  }
+
+  /* 切换模型：加载新模型 + 切换绑定（TTS/文字/音色/人设/知识库） */
+  function switchModel(bindingId) {
+    if (state.busy || state.speaking) return showTip('正在说话中，稍等一下~', 1200);
+    var list = CFG.bindings || [];
+    var b = null;
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].id === bindingId) { b = list[i]; break; }
+    }
+    if (!b || !b.modelPath) return showTip('该绑定缺少模型路径', 2000);
+
+    stopTts();
+    closeChat();
+    hideQuickBar();
+    hideTip();
+    state.bindingId = bindingId;
+    state.history = [];
+    state.ready = false;
+    setStatus('加载模型中…');
+
+    // 更新 chat/tts 为绑定指定的提供方（后续请求直接带 bindingId）
+    if (b.chat) CFG.chat = b.chat;
+    if (b.tts) CFG.tts = b.tts;
+
+    // 更新 UI 名字/头像
+    if (b.personality && b.personality.name) {
+      if (CFG.ui) { CFG.ui.title = b.personality.name; CFG.ui.avatar = b.personality.avatar || CFG.ui.avatar; }
+    }
+
+    // 重新加载 Live2D 模型
+    var opt = {
+      path: resolvePath(b.modelPath),
+      scale: (CFG.model && CFG.model.scale) || 1,
+      position: (CFG.model && CFG.model.position) || [0, 0],
+      volume: (CFG.model && CFG.model.volume) || 0,
+      logLevel: (CFG.model && CFG.model.logLevel) || 'warn'
+    };
+    if (typeof l2d.load === 'function') {
+      l2d.load(opt).catch(function (e) {
+        console.error('[L2D-Waifu] 切换模型失败：', e);
+        setStatus('模型加载失败：' + (e && e.message), 'error');
+        state.ready = true;
+      });
+    } else {
+      setStatus('当前 l2d 库不支持热切换模型', 'error');
+    }
+    showTip('已切换为「' + esc(b.name || b.modelPath) + '」', 2000);
+  }
+
   /* ---------------- 对话流程 ---------------- */
   function send(text) {
     if (!state.ready) return showTip('模型还没准备好，稍等一下~', 1500);
@@ -1033,13 +1273,14 @@
   }
 
   function ttsEnabled() {
-    return !!(CFG.tts && CFG.tts.enabled);
+    var cfg = effectiveTtsCfg() || CFG.tts || {};
+    return !!(cfg && cfg.enabled && cfg.api);
   }
 
   /* ---------------- API 调用 ---------------- */
   function callChat(userText) {
-    var cfg = CFG.chat || {};
-    var sys = cfg.systemPrompt ||
+    var cfg = effectiveChatCfg() || CFG.chat || {};
+    var sys = cfg.systemPrompt || effectiveSystemPrompt() ||
       '你是可爱的 Live2D 看板娘，回答简洁生动，使用中文，控制在 2 句话内。';
 
     var messages = [{ role: 'system', content: sys }];
@@ -1051,6 +1292,7 @@
       temperature: cfg.temperature != null ? cfg.temperature : 0.7
     };
     if (cfg.model) body.model = cfg.model;
+    if (state.bindingId) body.bindingId = state.bindingId;
 
     var ctrl = new AbortController();
     var timer = setTimeout(function () { ctrl.abort(); }, cfg.timeout || 60000);
@@ -1086,7 +1328,7 @@
   }
 
   function callTts(text) {
-    var cfg = CFG.tts || {};
+    var cfg = effectiveTtsCfg() || CFG.tts || {};
     // 清洗文本：去掉标签行/特殊前缀，压缩换行（部分 TTS 接口对 # 与换行敏感）
     var clean = String(text || '')
       .replace(/^\s*#[^\n]*[\n\r]+/g, '')   // 去掉 #xxx 标签行
@@ -1097,6 +1339,7 @@
 
     var params = Object.assign({ text: clean }, cfg.extraParams || {});
     if (cfg.voice) params.voice = cfg.voice;
+    if (state.bindingId) params.bindingId = state.bindingId;
     var url = cfg.api + '?' + Object.keys(params).map(function (k) {
       return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
     }).join('&');
@@ -1227,14 +1470,13 @@
 
     function finishSpeaking() {
       state.speaking = false;
-      ui.bubble.style.display = 'none';
+      hideTip();
       if (l2d && state._prevVol != null) {
         l2d.setVolume(state._prevVol);
         state._prevVol = null;
       }
       setStatus(idleStatusText());
       playIdle(true);
-      hideTip();
     }
 
     audioEl.onended = onEnd;
@@ -1263,11 +1505,9 @@
       });
     }
 
-    // 显示聊天气泡（气泡显示文字，同时口型开合）
-    // 若聊天面板已打开，文字已在面板中输出，头顶气泡不重复显示
-    if (!ui.panel.classList.contains('open')) {
-      ui.bubble.style.display = 'block';
-      ui.bubble.textContent = text;
+    // 显示统一气泡（模型回复文字；若大聊天框/简要发送框已展开则不再重复显示）
+    if (!ui.panel.classList.contains('open') && !ui.quickbar.classList.contains('open')) {
+      showTip(text, 0);
     }
 
     tick();
@@ -1344,8 +1584,20 @@
     toggleChat: toggleChat,
     openChat: openChat,
     closeChat: closeChat,
+    // 简要发送小框
+    openQuickBar: openQuickBar,
+    hideQuickBar: hideQuickBar,
+    toggleQuickBar: toggleQuickBar,
     hide: hide,
     show: show,
+    // 动态调整模型缩放，并同步菜单/气泡/聊天框与模型的间距（随缩放联动）
+    setScale: function (scale) {
+      var s = Number(scale);
+      if (!(s > 0)) return;
+      if (l2d && typeof l2d.setScale === 'function') l2d.setScale(s);
+      if (CFG.model) CFG.model.scale = s;
+      if (rootEl) rootEl.style.setProperty('--l2d-scale', s);
+    },
     playMotion: function (group, index, priority) {
       if (l2d && state.ready) l2d.playMotion(group, index, priority);
     },
